@@ -1,0 +1,26 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor cruft
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Temp files
+*.tmp
+*.bak
+*.log
+
+# Don't commit secrets or local-only configs
+.env
+.env.local
+.env.*.local
+
+# Build artifacts (none expected — this is a static site)
+node_modules/
+dist/
+build/

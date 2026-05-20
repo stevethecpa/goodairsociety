@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Good Air Society — Chilliwack</title>
+  <meta name="description" content="A new non-profit in Chilliwack helping men 25–45 make time for the friendships, fitness, and outdoor habits that compound into a longer, better life. Good air. Hard miles. Real friends.">
+  <meta property="og:title" content="The Good Air Society">
+  <meta property="og:description" content="Good air. Hard miles. Real friends. A Fraser Valley society for men 25–45 launching late 2026.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Reset & base ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      color: #1f2a30;
+      background: #f5f1ea;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ---------- Tokens ---------- */
+    :root {
+      --night: #142028;
+      --night-2: #1c2d39;
+      --slate: #3d4a52;
+      --mist: #f5f1ea;
+      --paper: #ffffff;
+      --ink: #1f2a30;
+      --muted: #5c6670;
+      --ember: #d97a3a;
+      --ember-deep: #b35a23;
+      --sage: #788a7c;
+      --line: #d8d2c4;
+      --max-w: 1120px;
+      --max-narrow: 720px;
+    }
+
+    /* ---------- Typography ---------- */
+    h1, h2, h3, h4, .serif {
+      font-family: 'Fraunces', 'Iowan Old Style', 'Georgia', serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      color: var(--ink);
+      margin: 0 0 0.5em;
+    }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); font-weight: 700; }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); }
+    h3 { font-size: clamp(1.3rem, 2.2vw, 1.6rem); }
+    p { margin: 0 0 1em; }
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ember);
+      margin-bottom: 1em;
+    }
+
+    /* ---------- Layout ---------- */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .narrow { max-width: var(--max-narrow); margin: 0 auto; }
+    section { padding: 96px 0; }
+
+    /* ---------- Nav ---------- */
+    nav {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--mist);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.01em;
+    }
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+    .nav-links a {
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      padding: 160px 0 200px;
+      color: var(--mist);
+      background: radial-gradient(ellipse at 50% 30%, #213548 0%, #142028 60%, #0c171f 100%);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.04), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(217, 122, 58, 0.08), transparent 40%);
+      pointer-events: none;
+    }
+    .stars {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    .mountains {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      width: 100%;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .hero h1 {
+      color: var(--mist);
+      max-width: 14ch;
+      margin: 0.4em auto 0.4em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--ember);
+      font-weight: 500;
+    }
+    .hero .lede {
+      max-width: 38rem;
+      margin: 0 auto 2em;
+      font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+      line-height: 1.55;
+      color: #c5cfd6;
+      font-weight: 400;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      padding: 6px 14px;
+      border: 1px solid rgba(245, 241, 234, 0.25);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #c5cfd6;
+      margin-bottom: 1.5em;
+    }
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1em;
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 26px;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--ember);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--ember-deep);
+      transform: translateY(-1px);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--mist);
+      border-color: rgba(245, 241, 234, 0.25);
+    }
+    .btn-ghost:hover {
+      border-color: var(--mist);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+    .btn-outline:hover {
+      background: var(--ink);
+      color: var(--mist);
+    }
+    .btn-arrow::after {
+      content: '→';
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+    .btn-arrow:hover::after { transform: translateX(3px); }
+
+    /* ---------- Section: Mission & Vision ---------- */
+    .mv {
+      background: var(--paper);
+      padding: 96px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 24px;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 800px) {
+      .mv-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+    .mv-block {
+      position: relative;
+      padding: 36px 32px;
+      background: var(--mist);
+      border-left: 4px solid var(--ember);
+    }
+    .mv-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ember);
+      margin-bottom: 18px;
+    }
+    .mv-text {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.2rem, 2vw, 1.45rem);
+      line-height: 1.45;
+      color: var(--ink);
+      margin: 0;
+      font-weight: 500;
+    }
+
+    /* ---------- Section: The Problem ---------- */
+    .problem {
+      background: var(--mist);
+      padding-top: 120px;
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 64px;
+    }
+    @media (max-width: 800px) {
+      .problem-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .stat {
+      padding: 32px;
+      background: var(--paper);
+      border-left: 3px solid var(--ember);
+    }
+    .stat-figure {
+      font-family: 'Fraunces', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--ember);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .stat-claim {
+      font-size: 1.02rem;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .stat-source {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .problem-summary {
+      margin-top: 56px;
+      text-align: center;
+      font-size: 1.15rem;
+      max-width: 36rem;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--slate);
+    }
+
+    /* ---------- Section: The Approach ---------- */
+    .approach {
+      background: var(--night);
+      color: var(--mist);
+      padding-top: 96px;
+      position: relative;
+    }
+    .approach h2 { color: var(--mist); }
+    .approach .eyebrow { color: var(--ember); }
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+    @media (max-width: 800px) {
+      .pillars { grid-template-columns: 1fr; }
+    }
+    .pillar {
+      padding: 36px 28px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .pillar:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .pillar-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 20px;
+      color: var(--ember);
+    }
+    .pillar h3 { color: var(--mist); margin-bottom: 12px; }
+    .pillar-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ember);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .pillar p {
+      color: #b8c2c9;
+      font-size: 0.96rem;
+      margin-bottom: 16px;
+    }
+    .pillar-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.92rem;
+      color: #9ca8b0;
+    }
+    .pillar-list li {
+      padding: 6px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .approach-note {
+      text-align: center;
+      margin-top: 56px;
+      font-size: 1.02rem;
+      color: #b8c2c9;
+      max-width: 38rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ---------- Section: Sample week ---------- */
+    .rhythm {
+      background: var(--mist);
+    }
+    .rhythm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 32px;
+    }
+    @media (max-width: 800px) {
+      .rhythm-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+    .schedule {
+      background: var(--paper);
+      padding: 8px 0;
+    }
+    .schedule-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .schedule-row:last-child { border-bottom: none; }
+    .schedule-row.featured {
+      background: linear-gradient(to right, rgba(217, 122, 58, 0.08), transparent);
+    }
+    .schedule-day {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--ink);
+      flex-shrink: 0;
+      width: 8rem;
+    }
+    .schedule-detail { color: var(--slate); font-size: 0.95rem; }
+    .schedule-time {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ---------- Section: The Science ---------- */
+    .science {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .science-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-top: 48px;
+    }
+    @media (max-width: 800px) {
+      .science-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .science-block {
+      padding: 0 0 0 28px;
+      border-left: 2px solid var(--ember);
+    }
+    .science-block h3 { margin-bottom: 16px; }
+    .science-block p { color: var(--slate); }
+    .science-source {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 16px;
+    }
+
+    /* ---------- Section: Values ---------- */
+    .values {
+      background: var(--mist);
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    @media (max-width: 1000px) {
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .values-grid { grid-template-columns: 1fr; }
+    }
+    .value {
+      background: var(--paper);
+      padding: 24px;
+      border-top: 3px solid var(--ember);
+    }
+    .value-num {
+      font-family: 'Fraunces', serif;
+      font-size: 1rem;
+      color: var(--ember);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .value h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.08rem;
+      margin: 0 0 8px;
+      color: var(--ink);
+    }
+    .value p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ---------- Section: Founder ---------- */
+    .founder {
+      background: var(--night-2);
+      color: var(--mist);
+    }
+    .founder h2 { color: var(--mist); }
+    .founder-portrait {
+      display: block;
+      margin: 32px auto 0;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(245, 241, 234, 0.18);
+      box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.5),
+                  0 0 0 6px rgba(217, 122, 58, 0.08);
+    }
+    @media (max-width: 540px) {
+      .founder-portrait { width: 128px; height: 128px; }
+    }
+    .founder-letter {
+      max-width: 42rem;
+      margin: 28px auto 0;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      color: #d5dde2;
+    }
+    .founder-letter p {
+      margin-bottom: 1.2em;
+    }
+    .founder-letter p:first-of-type::first-letter {
+      font-family: 'Fraunces', serif;
+      font-size: 3.6rem;
+      float: left;
+      line-height: 0.9;
+      padding: 0.1em 0.1em 0 0;
+      color: var(--ember);
+      font-weight: 600;
+    }
+    .signature {
+      margin-top: 1.5em;
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--mist);
+    }
+    .signature-role {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-size: 0.85rem;
+      color: #8b97a0;
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+    }
+
+    /* ---------- Section: Who is this for ---------- */
+    .audience {
+      background: var(--mist);
+    }
+    .audience-list {
+      list-style: none;
+      padding: 0;
+      margin: 40px auto 0;
+      max-width: 38rem;
+    }
+    .audience-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+    .audience-list li:last-child { border-bottom: none; }
+    .checkmark {
+      color: var(--ember);
+      font-weight: 700;
+      flex-shrink: 0;
+      width: 24px;
+    }
+
+    /* ---------- Section: Join (CTA) ---------- */
+    .join {
+      background: linear-gradient(180deg, #142028 0%, #1c2d39 100%);
+      color: var(--mist);
+      padding: 120px 0;
+      text-align: center;
+    }
+    .join h2 { color: var(--mist); }
+    .join .lede {
+      max-width: 36rem;
+      margin: 0 auto 40px;
+      font-size: 1.08rem;
+      color: #c5cfd6;
+    }
+    .form-wrap {
+      max-width: 540px;
+      margin: 0 auto;
+      background: var(--paper);
+      border-radius: 8px;
+      padding: 8px;
+      box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.4);
+    }
+    .form-wrap iframe {
+      width: 100%;
+      border: none;
+      border-radius: 4px;
+      display: block;
+    }
+    .form-placeholder {
+      padding: 48px 32px;
+      text-align: left;
+      color: var(--ink);
+      background: var(--paper);
+      border-radius: 4px;
+    }
+    .form-placeholder h3 { margin-top: 0; }
+    .form-placeholder code {
+      display: block;
+      background: #f0ebe0;
+      padding: 12px;
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 0.78rem;
+      border-radius: 3px;
+      margin: 12px 0;
+      color: var(--ink);
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .join-aside {
+      margin-top: 32px;
+      font-size: 0.9rem;
+      color: #8b97a0;
+    }
+    .join-aside a {
+      color: var(--ember);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ---------- Section: FAQ ---------- */
+    .faq {
+      background: var(--mist);
+    }
+    .faq-list {
+      max-width: var(--max-narrow);
+      margin: 48px auto 0;
+    }
+    details {
+      border-bottom: 1px solid var(--line);
+      padding: 4px 0;
+    }
+    details summary {
+      cursor: pointer;
+      padding: 20px 0;
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--ember);
+      font-weight: 400;
+      transition: transform 0.2s;
+    }
+    details[open] summary::after { transform: rotate(45deg); }
+    details > div {
+      padding: 0 0 20px;
+      color: var(--slate);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: var(--night);
+      color: #8b97a0;
+      padding: 56px 0 32px;
+      text-align: center;
+      font-size: 0.88rem;
+    }
+    footer .brand {
+      color: var(--mist);
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .footer-tagline {
+      font-style: italic;
+      color: #8b97a0;
+      max-width: 32rem;
+      margin: 16px auto;
+    }
+    .footer-meta {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(245, 241, 234, 0.08);
+      color: #6b7680;
+      font-size: 0.8rem;
+    }
+    .footer-meta a { color: var(--ember); }
+
+    /* ---------- Utilities ---------- */
+    .text-center { text-align: center; }
+    .mt-md { margin-top: 32px; }
+  </style>
+</head>
+<body>
+
+  <!-- =================== NAV =================== -->
+  <nav>
+    <a href="#top" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="14" r="5" fill="#d97a3a"/>
+        <path d="M 4 32 L 14 22 L 20 28 L 28 18 L 36 32 Z" fill="#f5f1ea"/>
+        <line x1="2" y1="34" x2="38" y2="34" stroke="#f5f1ea" stroke-width="1.5"/>
+      </svg>
+      <span>The Good Air Society</span>
+    </a>
+    <div class="nav-links">
+      <a href="#mission">Mission</a>
+      <a href="#problem">Why</a>
+      <a href="#approach">How</a>
+      <a href="#values">Values</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- =================== HERO =================== -->
+  <section class="hero" id="top">
+    <!-- Subtle stars -->
+    <svg class="stars" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#fff">
+        <circle cx="120" cy="80" r="1"/>
+        <circle cx="240" cy="160" r="0.8"/>
+        <circle cx="380" cy="60" r="1.2"/>
+        <circle cx="520" cy="120" r="0.7"/>
+        <circle cx="640" cy="40" r="0.9"/>
+        <circle cx="760" cy="180" r="1"/>
+        <circle cx="880" cy="80" r="1.1"/>
+        <circle cx="980" cy="140" r="0.8"/>
+        <circle cx="1080" cy="60" r="1"/>
+        <circle cx="180" cy="220" r="0.9"/>
+        <circle cx="340" cy="280" r="0.7"/>
+        <circle cx="700" cy="240" r="1"/>
+        <circle cx="860" cy="200" r="0.8"/>
+        <circle cx="1020" cy="220" r="1.2"/>
+      </g>
+    </svg>
+
+    <!-- Hero content -->
+    <div class="container hero-content">
+      <span class="hero-eyebrow">Chilliwack, BC · Launching late 2026</span>
+      <h1>Good air. Hard miles. <em>Real friends.</em></h1>
+      <p class="lede">A new non-profit society in the Fraser Valley helping men 25–45 make time for the friendships, fitness, and outdoor habits that compound into a longer, better life.</p>
+      <div class="cta-row">
+        <a href="contact.html" class="btn btn-primary btn-arrow">Join the launch list</a>
+        <a href="#approach" class="btn btn-ghost">See how it works</a>
+      </div>
+    </div>
+
+    <!-- Mountain silhouette -->
+    <svg class="mountains" viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Back range -->
+      <path d="M0,200 L0,140 L120,90 L240,110 L360,70 L480,100 L600,60 L720,95 L840,75 L960,110 L1080,80 L1200,120 L1200,200 Z" fill="#1c2d39" opacity="0.8"/>
+      <!-- Middle range -->
+      <path d="M0,200 L0,160 L80,130 L200,140 L320,110 L440,135 L560,105 L680,130 L800,115 L920,140 L1040,120 L1200,150 L1200,200 Z" fill="#142028" opacity="0.9"/>
+      <!-- Foreground treeline -->
+      <path d="M0,200 L0,180 L60,170 L120,178 L180,168 L240,176 L300,165 L360,174 L420,168 L480,176 L540,170 L600,175 L660,165 L720,172 L780,168 L840,175 L900,170 L960,176 L1020,168 L1080,174 L1140,170 L1200,178 L1200,200 Z" fill="#0c171f"/>
+    </svg>
+  </section>
+
+  <!-- =================== MISSION & VISION =================== -->
+  <section class="mv" id="mission">
+    <div class="container">
+      <div class="narrow text-center">
+        <div class="eyebrow">What we're doing &amp; where we're going</div>
+        <h2>Mission and Vision.</h2>
+      </div>
+      <div class="mv-grid">
+        <div class="mv-block">
+          <div class="mv-label">Mission</div>
+          <p class="mv-text">To help men in the Fraser Valley make time for the friendships, fitness, and outdoor habits that compound into a longer, better life.</p>
+        </div>
+        <div class="mv-block">
+          <div class="mv-label">Vision</div>
+          <p class="mv-text">A Fraser Valley where the busy years of work and family don't cost men their friendships, their fitness, or their relationship with the outdoors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== THE PROBLEM =================== -->
+  <section class="problem" id="problem">
+    <div class="container">
+      <div class="narrow text-center">
+        <div class="eyebrow">The Why</div>
+        <h2>Life gets busy. The good stuff slips.</h2>
+        <p style="color: var(--slate); font-size: 1.08rem;">Careers pick up. Families form. Calendars tighten. The default friend group from school and post-secondary disperses. Outdoor weekends become rare. None of it is dramatic — and that is the problem. Quiet drift is the story most men's bodies, friendships, and outdoor habits tell over the decade from 30 to 40. The fix is consistent action, not crisis response.</p>
+      </div>
+
+      <div class="problem-grid">
+        <div class="stat">
+          <div class="stat-figure">~10%</div>
+          <div class="stat-claim">Loss of cardiorespiratory fitness per decade after age 30 in untrained adults — but the decline can be arrested or reversed at any age.</div>
+          <div class="stat-source">Mandsager et al., JAMA Network Open 2018</div>
+        </div>
+        <div class="stat">
+          <div class="stat-figure">3×</div>
+          <div class="stat-claim">Adherence advantage for group exercise versus solo. Men are roughly three times more likely to stick with a workout when it is social — even when the workout itself is identical.</div>
+          <div class="stat-source">Multiple cohort studies, summarized in BMC Public Health 2020</div>
+        </div>
+        <div class="stat">
+          <div class="stat-figure">Top 2</div>
+          <div class="stat-claim">Of all modifiable factors in adulthood, strong social ties consistently rank in the top two — alongside regular exercise — for impact on long-term health and longevity.</div>
+          <div class="stat-source">Holt-Lunstad et al., PLOS Medicine 2010</div>
+        </div>
+      </div>
+
+      <p class="problem-summary">None of this is news. What's new is having a place to actually do something about it — week after week, in your own community.</p>
+    </div>
+  </section>
+
+  <!-- =================== THE APPROACH =================== -->
+  <section class="approach" id="approach">
+    <div class="container">
+      <div class="narrow text-center">
+        <div class="eyebrow">The How</div>
+        <h2>Three pillars. One simple idea.</h2>
+        <p style="color: #b8c2c9; font-size: 1.05rem;">Men open up while walking, paddling, and working with their hands more readily than while sitting across a table. So we do things together — and the conversation finds us.</p>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar">
+          <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M3 12c3-2 6-2 9 0s6 2 9 0"/>
+            <path d="M3 18c3-2 6-2 9 0s6 2 9 0"/>
+            <path d="M3 6c3-2 6-2 9 0s6 2 9 0"/>
+          </svg>
+          <div class="pillar-tag">Pillar 1</div>
+          <h3>Move</h3>
+          <p>Weeknight programs designed for accessibility, consistency, and a schedule that respects your weekends. No fitness minimum, no specialized gear, social pace, no-drop policy.</p>
+          <ul class="pillar-list">
+            <li>Wednesday Evening Ride · 10–40 km</li>
+            <li>Friday Run Club · 3–8 km, year-round</li>
+            <li>First Sunday Cold Plunge · Cultus Lake</li>
+          </ul>
+        </div>
+
+        <div class="pillar">
+          <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4 20 L9 11 L13 16 L17 9 L20 20 Z"/>
+            <circle cx="17" cy="5" r="2"/>
+          </svg>
+          <div class="pillar-tag">Pillar 2</div>
+          <h3>Wilderness</h3>
+          <p>The trips that build the deepest bonds — and require the most rigorous planning. Trained leaders, satellite communicators, no surprises.</p>
+          <ul class="pillar-list">
+            <li>Monthly long hike or overnight · May–Oct</li>
+            <li>The Hytte Weekend · February</li>
+          </ul>
+        </div>
+
+        <div class="pillar">
+          <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 21c-3-4-7-7-7-12a7 7 0 0114 0c0 5-4 8-7 12z"/>
+            <path d="M9 9c1 2 2 3 3 3s2-1 3-3"/>
+          </svg>
+          <div class="pillar-tag">Pillar 3</div>
+          <h3>Gather</h3>
+          <p>Indoor and shoulder-season programming that keeps the Society alive through the dark months. Slower spaces, hands busy, conversations easier.</p>
+          <ul class="pillar-list">
+            <li>Monthly Campfire Conversation</li>
+            <li>Quarterly Fix-It Night</li>
+            <li>Winter Cook-Together Nights</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="approach-note">All sober-friendly. All low-pressure. No fitness minimum. No prior introductions required.</p>
+    </div>
+  </section>
+
+  <!-- =================== SAMPLE RHYTHM =================== -->
+  <section class="rhythm">
+    <div class="container">
+      <div class="narrow">
+        <div class="eyebrow">A Sample Week</div>
+        <h2>What it actually looks like.</h2>
+        <p style="color: var(--slate);">The defining feature is consistency. A Wednesday ride and a Friday run that happen every week, plus a monthly cold plunge that lands on the first Sunday of every month year-round, are worth a hundred one-off retreats. Weekends are family-first. Here's what an average month looks like once we're up and running.</p>
+      </div>
+
+      <div class="rhythm-grid">
+        <div class="schedule">
+          <div class="schedule-row">
+            <div>
+              <div class="schedule-day">Wednesday</div>
+              <div class="schedule-detail">Evening Ride — 10–40 km, social pace, good weather only.</div>
+            </div>
+            <div class="schedule-time">6:00 PM</div>
+          </div>
+          <div class="schedule-row">
+            <div>
+              <div class="schedule-day">Friday</div>
+              <div class="schedule-detail">Run Club — 3–8 km, all together or by pace group depending on numbers.</div>
+            </div>
+            <div class="schedule-time">6:30 PM</div>
+          </div>
+          <div class="schedule-row featured">
+            <div>
+              <div class="schedule-day">First Sunday</div>
+              <div class="schedule-detail">Cold Plunge at Cultus Lake — year-round, every month. Coffee or hot chocolate after.</div>
+            </div>
+            <div class="schedule-time">Monthly</div>
+          </div>
+          <div class="schedule-row">
+            <div>
+              <div class="schedule-day">Weekends</div>
+              <div class="schedule-detail">Family-first. Optional, member-organized trail walk + coffee for those who can join.</div>
+            </div>
+            <div class="schedule-time">—</div>
+          </div>
+          <div class="schedule-row">
+            <div>
+              <div class="schedule-day">Once a month</div>
+              <div class="schedule-detail">Long hike or overnight camping — Cultus Lake, Chilliwack Lake, or Sasquatch Park.</div>
+            </div>
+            <div class="schedule-time">May–Oct</div>
+          </div>
+          <div class="schedule-row">
+            <div>
+              <div class="schedule-day">Once a month</div>
+              <div class="schedule-detail">Campfire Conversation — open topic, no requirement to share.</div>
+            </div>
+            <div class="schedule-time">Evening</div>
+          </div>
+          <div class="schedule-row featured">
+            <div>
+              <div class="schedule-day">Once a year</div>
+              <div class="schedule-detail">The Hytte Weekend — a cabin, board games, slow cooking, snowshoes, no agenda.</div>
+            </div>
+            <div class="schedule-time">February</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.4rem; margin-bottom: 0.4em;">Built for the Fraser Valley — and for your weekends</h3>
+          <p style="color: var(--slate);">Weeknight programming is the default because weekends belong to your family. The Wednesday ride and the Friday run land in the part of the calendar most men actually have free, and the marquee monthly ritual — the First Sunday Cold Plunge at Cultus Lake — is a short Sunday-morning anchor that doesn't compete with kids' soccer or in-laws over for brunch.</p>
+          <p style="color: var(--slate);">Most outdoor clubs go quiet from October to March. We don't. The Norwegians have a saying — <em>there is no bad weather, only bad clothing</em>. The Cold Plunge runs every first Sunday of every month, year-round. The Hytte Weekend is the marquee event of the dark months. By Year 2 we'll have a small gear library so a rain shell and a headlamp aren't your excuse.</p>
+          <p style="color: var(--slate);">And nothing happens at random. The activities are chosen because they're among the most effective ways to maintain and improve cardiorespiratory fitness — the strongest modifiable predictor of long-term health for men in this age range.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== THE SCIENCE =================== -->
+  <section class="science">
+    <div class="container">
+      <div class="narrow text-center">
+        <div class="eyebrow">The Two Levers</div>
+        <h2>Pulling on what actually moves the needle.</h2>
+      </div>
+
+      <div class="science-grid">
+        <div class="science-block">
+          <h3>Cardiorespiratory fitness</h3>
+          <p>Your VO2 max — the body's maximum rate of oxygen uptake — is one of the strongest objective predictors of long-term health and survival. It declines roughly 10% per decade after 30 in untrained adults. The good news: that decline is reversible with consistent aerobic and strength work, and the dividend is largest exactly in your thirties and forties.</p>
+          <div class="science-source">Mandsager K, Harb S, Cremer P, et al. Association of Cardiorespiratory Fitness With Long-term Mortality. JAMA Network Open, 2018.</div>
+        </div>
+        <div class="science-block">
+          <h3>Social connection</h3>
+          <p>Adults with weak social ties die at the same elevated rate as those who smoke about 15 cigarettes a day, controlling for everything researchers know how to control for. Yet most men over 30 say their friendships are thinner now than they were at 22. A reliable Saturday walk is one of the most cost-effective interventions in this category that exists.</p>
+          <div class="science-source">Holt-Lunstad J, Smith TB, Layton JB. Social Relationships and Mortality Risk: A Meta-analytic Review. PLOS Medicine, 2010.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== VALUES =================== -->
+  <section class="values" id="values">
+    <div class="container">
+      <div class="narrow text-center">
+        <div class="eyebrow">How We Operate</div>
+        <h2>Five things we won't compromise on.</h2>
+      </div>
+
+      <div class="values-grid">
+        <div class="value">
+          <div class="value-num">01</div>
+          <h4>Show up.</h4>
+          <p>The most important thing we do is exist consistently. A Wednesday ride, a Friday run, and a first-Sunday cold plunge that happen every single time, year after year, build the kind of trust no marketing can manufacture.</p>
+        </div>
+        <div class="value">
+          <div class="value-num">02</div>
+          <h4>Side by side, not face to face.</h4>
+          <p>Men open up while walking, riding, or working with their hands. Conversation is a byproduct, never the requirement.</p>
+        </div>
+        <div class="value">
+          <div class="value-num">03</div>
+          <h4>Low barrier, high welcome.</h4>
+          <p>No application. No minimum fitness. No required disclosure. Show up to your first event having told no one and known no one.</p>
+        </div>
+        <div class="value">
+          <div class="value-num">04</div>
+          <h4>Sober-friendly by default.</h4>
+          <p>Anyone not drinking is never the odd one out — for whatever reason. Alcohol is permitted at some adult events but never central.</p>
+        </div>
+        <div class="value">
+          <div class="value-num">05</div>
+          <h4>Move with purpose.</h4>
+          <p>Running, cycling, hiking, camping. Activities aren't chosen at random — they're chosen because they happen to be the most effective at what we're trying to do.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== FOUNDER =================== -->
+  <section class="founder">
+    <div class="container">
+      <div class="narrow text-center">
+        <div class="eyebrow">Why we're starting this</div>
+        <h2>A note from the founder.</h2>
+        <img class="founder-portrait" src="steven_headshot_square.jpg" alt="Steven Alexander, Founder of The Good Air Society" width="160" height="160" loading="lazy">
+      </div>
+
+      <div class="founder-letter">
+        <p>I'm starting The Good Air Society because, somewhere in the late twenties, the default friend group dissolves. Career picks up. Family arrives. Calendars get dense. Friends move. None of it is anyone's fault — it's just what happens when life starts demanding more of you. The good news is that the fix is straightforward: a few good friends, a few regular reasons to be outside, and the discipline to actually show up.</p>
+
+        <p>The Fraser Valley has everything we need. Mountains within an hour. Rivers, trails, lakes, more campsites than men to fill them. What we don't have, as far as I can tell, is a society putting men back together with one another. So we're building one.</p>
+
+        <p>The first goal is small and specific: get a Wednesday evening ride and a Friday evening run running in Chilliwack, every week, no matter what. Then add a First Sunday Cold Plunge at Cultus Lake — short, year-round, the marquee monthly ritual. Then a long hike or overnight every month in the warmer half of the year. Then a cabin weekend in February with people you'd take a winter weekend with. Weekends stay family-first. From there we'll see what wants to be built.</p>
+
+        <p>If any of that sounds like something you'd show up to — or help build — please drop your email below. We're aiming to launch programming in late 2026. Founding members and founding board prospects are welcome to reach out directly.</p>
+
+        <div class="signature">
+          — Steven Alexander
+          <span class="signature-role">Founder · Chilliwack, BC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== AUDIENCE =================== -->
+  <section class="audience">
+    <div class="container">
+      <div class="narrow text-center">
+        <div class="eyebrow">Is this for you?</div>
+        <h2>You might be here if…</h2>
+      </div>
+
+      <ul class="audience-list">
+        <li><span class="checkmark">✓</span> You're roughly 25–45 and live in or near Chilliwack.</li>
+        <li><span class="checkmark">✓</span> You'd value a steady group of guys who show up every weekend, year after year.</li>
+        <li><span class="checkmark">✓</span> You'd come to a Wednesday ride or a Friday run if someone reliably ran one.</li>
+        <li><span class="checkmark">✓</span> You'd rather build a routine than read about one.</li>
+        <li><span class="checkmark">✓</span> You'd rather train than be told you should train.</li>
+        <li><span class="checkmark">✓</span> You believe the dark, wet Fraser Valley winter is something to be met, not endured.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =================== JOIN =================== -->
+  <section class="join" id="join">
+    <div class="container">
+      <div class="narrow text-center">
+        <div class="eyebrow">Be one of the first</div>
+        <h2>Ready to join us?</h2>
+        <p class="lede">Drop your email on the launch list and you'll be one of the first to know when the Wednesday ride, Friday run, and First Sunday cold plunge are on the calendar. About one email a month, ever. No spam, easy unsubscribe.</p>
+      </div>
+
+      <div class="cta-row" style="margin-top: 8px;">
+        <a href="contact.html" class="btn btn-primary btn-arrow">Go to launch list signup</a>
+      </div>
+
+      <p class="join-aside">
+        Want to help build this instead? Founding board prospects and lead volunteers — please write directly to
+        <a href="mailto:steven@goodairsociety.org?subject=Helping%20build%20The%20Good%20Air%20Society">steven@goodairsociety.org</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- =================== FAQ =================== -->
+  <section class="faq">
+    <div class="container">
+      <div class="narrow text-center">
+        <div class="eyebrow">Questions you might have</div>
+        <h2>Frequently asked.</h2>
+      </div>
+
+      <div class="faq-list">
+        <details>
+          <summary>When are you actually launching?</summary>
+          <div>Programming starts in late 2026 with a soft launch of the Saturday Trail Walk, followed by Run Club and the Evening Ride in subsequent weeks. The full calendar including Wilderness-pillar overnights comes online in spring 2027. We'll email the launch list when each program goes live.</div>
+        </details>
+        <details>
+          <summary>How is this funded?</summary>
+          <div>A mix of modest annual membership fees ($75 standard, bursaries available no-questions-asked), founding donor contributions, local community grants, and — once we have an operating track record — provincial and national grants for community health and physical activity. Registered charity status with the CRA is a long-term goal that we will pursue when the Society is ready, not against a fixed schedule.</div>
+        </details>
+        <details>
+          <summary>Do I need to be fit?</summary>
+          <div>No. Every Move-pillar program runs at a social pace with a no-drop policy. The Friday Run Club starts as short as 3 km and the Wednesday Evening Ride starts as short as 10 km. If you can ride a bike for an hour or run a few kilometres at a conversational pace, you can be a member. Fitness is a destination of the work, not an entry requirement.</div>
+        </details>
+        <details>
+          <summary>Do I need to bring my own gear?</summary>
+          <div>For the weekly programs: just decent shoes, weather-appropriate clothing, and a water bottle. For the Wilderness pillar (overnights and the Hytte Weekend), a basic kit list will be circulated in advance, and we plan to build a small gear-loaner library by Year 2 so you don't need to buy anything to participate.</div>
+        </details>
+        <details>
+          <summary>Can I show up without committing to anything?</summary>
+          <div>Yes. The first event is always free, no questions asked, no membership form required. The Saturday Trail Walk is the easiest entry point — just turn up at the trailhead. Membership and program fees only come into play if you stick around.</div>
+        </details>
+        <details>
+          <summary>What's a typical group size?</summary>
+          <div>Once we're up and running, expect 8–15 men at a Wednesday ride or Friday run, and 10–20 at a First Sunday Cold Plunge. The Wilderness-pillar trips are smaller — 8–12 men per overnight — and built for closer connection.</div>
+        </details>
+        <details>
+          <summary>What about weekends?</summary>
+          <div>Weekends are family-first by design. The Society's weekly programs land on weekdays so they don't compete with kids' soccer, Saturday-morning routines, or in-laws over for brunch. An optional, member-organized trail walk + coffee runs informally on weekends for guys who can join. The monthly hike or overnight (May–Oct) and the annual February Hytte Weekend are the only intentional weekend events, and they're spaced out enough to be planned around.</div>
+        </details>
+        <details>
+          <summary>What if I'm a bit older or younger than 25–45?</summary>
+          <div>Programs are designed with the 25-45 cohort in mind because that is the demographic with the strongest case for the VO2-max-and-friendship work. But age is not checked at the trailhead. If you are 23 or 52 and the description fits, come along.</div>
+        </details>
+        <details>
+          <summary>Are you a registered charity? Can I get a tax receipt?</summary>
+          <div>Not yet. The Society will incorporate as a BC non-profit in 2026. Federal charity registration is a long-term goal — we will pursue it when the Society is operationally and financially ready, rather than against a fixed schedule. Tax-receipted donations will be available from the date CRA confirms charity status; founding contributions made before that point will be gratefully acknowledged but cannot be receipted.</div>
+        </details>
+        <details>
+          <summary>I want to help, but I am not in Chilliwack.</summary>
+          <div>For now, the work is hyper-local to Chilliwack. If the model proves out, expansion to other Fraser Valley communities will be considered. Drop us a line if you would be interested in helping start something in your community - we will share what we learn.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== FOOTER =================== -->
+  <footer>
+    <div class="container">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="14" r="5" fill="#d97a3a"/>
+          <path d="M 4 32 L 14 22 L 20 28 L 28 18 L 36 32 Z" fill="#f5f1ea"/>
+          <line x1="2" y1="34" x2="38" y2="34" stroke="#f5f1ea" stroke-width="1.5"/>
+        </svg>
+        <span>The Good Air Society</span>
+      </div>
+      <p class="footer-tagline">A Fraser Valley initiative inspired by friluftsliv, hytte, dugnad - and the long walk home.</p>
+      <p>Chilliwack, British Columbia &middot; info@goodairsociety.org</p>
+      <div class="footer-meta">
+        &copy; 2026 The Good Air Society (in formation). BC Society incorporation in progress.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
