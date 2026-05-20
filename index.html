@@ -115,6 +115,24 @@
       transition: opacity 0.2s;
     }
     .nav-links a:hover { opacity: 1; }
+    .nav-links a:focus-visible {
+      outline: 2px solid var(--mist);
+      outline-offset: 4px;
+      border-radius: 2px;
+      opacity: 1;
+    }
+    .nav-links .nav-link-research {
+      color: var(--ember);
+      opacity: 1;
+    }
+    .nav-links .nav-link-research:hover {
+      color: #f0a273;
+    }
+    .nav-links .nav-link-research:focus-visible {
+      outline: 2px solid var(--ember);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
     @media (max-width: 640px) {
       .nav-links { display: none; }
     }
@@ -745,6 +763,7 @@
       <a href="#problem">Why</a>
       <a href="#approach">How</a>
       <a href="#values">Values</a>
+      <a href="research.html" class="nav-link-research">Research</a>
       <a href="contact.html">Contact</a>
     </div>
   </nav>
