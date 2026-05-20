@@ -30,3 +30,9 @@ build/
 *.pat
 *_token.txt
 *_pat.txt
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
