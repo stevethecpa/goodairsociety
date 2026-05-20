@@ -402,6 +402,97 @@
       outline-offset: 3px;
     }
 
+
+    /* ---------- VO2 personal info bar ---------- */
+    .vo2-personal {
+      padding: 14px 18px;
+      background: var(--paper);
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+    .vo2-personal-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ember);
+    }
+    .vo2-personal .vo2-inputs {
+      margin: 0;
+      flex: 1;
+    }
+
+    /* ---------- 2x2 methods grid ---------- */
+    .vo2-methods-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 4px;
+    }
+    @media (max-width: 720px) {
+      .vo2-methods-grid { grid-template-columns: 1fr; }
+    }
+    .vo2-methods-grid .vo2-method {
+      margin-bottom: 0;
+      padding: 22px 20px;
+      border: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--paper);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .vo2-methods-grid .vo2-method:has(input[name="vo2-use"]:checked) {
+      border-color: var(--ember);
+      box-shadow: 0 0 0 2px rgba(217, 122, 58, 0.15);
+    }
+    .vo2-method-pick {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px 8px 4px 6px;
+      border-radius: 4px;
+      background: var(--mist);
+      text-transform: uppercase;
+      transition: color 0.2s, background 0.2s;
+    }
+    .vo2-method-pick:hover { color: var(--ink); }
+    .vo2-method-pick input[type="radio"] { margin: 0; cursor: pointer; accent-color: var(--ember); }
+    .vo2-methods-grid .vo2-method:has(input[name="vo2-use"]:checked) .vo2-method-pick {
+      color: var(--ember-deep);
+      background: rgba(217, 122, 58, 0.14);
+    }
+    .vo2-methods-grid .vo2-method h3 {
+      margin: 4px 0 6px;
+      padding-right: 130px;
+    }
+    .vo2-methods-grid .vo2-method > p {
+      margin-bottom: 12px;
+      font-size: 0.92rem;
+    }
+    .vo2-methods-grid .vo2-result {
+      margin-top: auto;
+    }
+    .vo2-methods-grid .vo2-formula {
+      margin-top: 8px;
+    }
     /* ---------- VO2 rating grid ---------- */
     .vo2-grid-wrap {
       margin: 20px 0 18px;
@@ -712,10 +803,9 @@
           <p>The research above is striking, but it stays abstract until you know your own number. A proper VO2 max measurement requires a lab, a treadmill, and a mask collecting exhaled gas. Two at-home methods get within reasonable range — useful for tracking change over months, not for clinical precision.</p>
 
           <div class="vo2-calculator">
-            <div class="vo2-method">
-              <h3>Method 1 — Resting heart rate (easiest)</h3>
-              <p>No exercise required. Count your pulse for 60 seconds, sitting still, first thing in the morning before coffee. Repeat over a few days and use the average. Then enter the numbers below.</p>
-
+            <!-- Personal info (shared by methods that need age/sex) -->
+            <div class="vo2-personal">
+              <div class="vo2-personal-label">Your info</div>
               <div class="vo2-inputs">
                 <label>Age (years)
                   <input type="number" id="vo2-age" min="15" max="90" value="35" inputmode="numeric">
@@ -727,33 +817,89 @@
                     <label><input type="radio" name="vo2-sex" value="F"> Female</label>
                   </div>
                 </fieldset>
-                <label>Resting HR (bpm)
-                  <input type="number" id="vo2-resting-hr" min="30" max="120" value="60" inputmode="numeric">
-                </label>
               </div>
-
-              <p class="vo2-result" id="vo2-resting-result">
-                Estimated VO2 max from resting heart rate: <strong>—</strong> mL/kg/min
-              </p>
-
-              <p class="vo2-formula">Uth-S&oslash;rensen-Overgaard-Pedersen (2004): VO2max &approx; 15.3 &times; (HRmax / HRrest), where HRmax &approx; 208 &minus; (0.7 &times; age) per Tanaka et al. (2001).</p>
             </div>
 
-            <div class="vo2-method">
-              <h3>Method 2 — Cooper 12-minute run (more accurate)</h3>
-              <p>Requires a measured distance (a 400 m track works perfectly, or a road with a GPS watch). Run as far as you can in 12 minutes &mdash; walking breaks allowed, but the goal is maximum distance covered. Enter total distance below.</p>
+            <!-- 2x2 grid of estimation methods -->
+            <div class="vo2-methods-grid">
 
-              <div class="vo2-inputs">
-                <label>Distance in 12 minutes (m)
-                  <input type="number" id="vo2-cooper-dist" min="500" max="5000" step="50" value="2400" inputmode="numeric">
+              <!-- Method 1 — Resting HR -->
+              <div class="vo2-method">
+                <label class="vo2-method-pick">
+                  <input type="radio" name="vo2-use" value="resting" checked>
+                  <span>Use this for grid</span>
                 </label>
+                <h3>1. Resting heart rate</h3>
+                <p>Easiest. Pulse for 60 seconds, seated, mornings. Average a few days.</p>
+                <div class="vo2-inputs">
+                  <label>Resting HR (bpm)
+                    <input type="number" id="vo2-resting-hr" min="30" max="120" value="60" inputmode="numeric">
+                  </label>
+                </div>
+                <p class="vo2-result" id="vo2-resting-result">VO2 max: <strong>&mdash;</strong> mL/kg/min</p>
+                <p class="vo2-formula">Uth-S&oslash;rensen-Overgaard-Pedersen (2004): 15.3 &times; (HRmax / HRrest). HRmax = 208 &minus; (0.7 &times; age) per Tanaka et al. (2001).</p>
               </div>
 
-              <p class="vo2-result" id="vo2-cooper-result">
-                Estimated VO2 max from Cooper test: <strong>&mdash;</strong> mL/kg/min
-              </p>
+              <!-- Method 2 — Cooper 12-min run -->
+              <div class="vo2-method">
+                <label class="vo2-method-pick">
+                  <input type="radio" name="vo2-use" value="cooper">
+                  <span>Use this for grid</span>
+                </label>
+                <h3>2. Cooper 12-min run</h3>
+                <p>Run as far as you can in 12 minutes. Track or GPS works.</p>
+                <div class="vo2-inputs">
+                  <label>Distance in 12 min (m)
+                    <input type="number" id="vo2-cooper-dist" min="500" max="5000" step="50" value="2400" inputmode="numeric">
+                  </label>
+                </div>
+                <p class="vo2-result" id="vo2-cooper-result">VO2 max: <strong>&mdash;</strong> mL/kg/min</p>
+                <p class="vo2-formula">Cooper (1968): (distance in metres &minus; 504.9) / 44.73.</p>
+              </div>
 
-              <p class="vo2-formula">Cooper (1968): VO2max = (distance in metres &minus; 504.9) / 44.73.</p>
+              <!-- Method 3 — FTP cycling test -->
+              <div class="vo2-method">
+                <label class="vo2-method-pick">
+                  <input type="radio" name="vo2-use" value="ftp">
+                  <span>Use this for grid</span>
+                </label>
+                <h3>3. FTP cycling test</h3>
+                <p>Take a 20-minute FTP test on a Peloton, Wahoo, or any power meter. Enter the resulting FTP (in watts) and your body weight.</p>
+                <div class="vo2-inputs">
+                  <label>FTP (watts)
+                    <input type="number" id="vo2-ftp" min="50" max="600" value="220" inputmode="numeric">
+                  </label>
+                  <label>Body weight (kg)
+                    <input type="number" id="vo2-ftp-weight" min="40" max="180" step="0.5" value="80" inputmode="decimal">
+                  </label>
+                </div>
+                <p class="vo2-result" id="vo2-ftp-result">VO2 max: <strong>&mdash;</strong> mL/kg/min</p>
+                <p class="vo2-formula">Allen &amp; Coggan model: 10.8 &times; (FTP / weight) + 7. Approximation for trained cyclists; accuracy improves with higher fitness.</p>
+              </div>
+
+              <!-- Method 4 — Rockport 1-mile walk -->
+              <div class="vo2-method">
+                <label class="vo2-method-pick">
+                  <input type="radio" name="vo2-use" value="rockport">
+                  <span>Use this for grid</span>
+                </label>
+                <h3>4. Rockport 1-mile walk</h3>
+                <p>Walk one mile (1.6 km) as fast as you can &mdash; no running. Note the finish time and the heart rate at the line.</p>
+                <div class="vo2-inputs">
+                  <label>Walk time (min)
+                    <input type="number" id="vo2-rockport-time" min="6" max="30" step="0.1" value="13.5" inputmode="decimal">
+                  </label>
+                  <label>HR at finish (bpm)
+                    <input type="number" id="vo2-rockport-hr" min="60" max="220" value="140" inputmode="numeric">
+                  </label>
+                  <label>Body weight (kg)
+                    <input type="number" id="vo2-rockport-weight" min="40" max="180" step="0.5" value="80" inputmode="decimal">
+                  </label>
+                </div>
+                <p class="vo2-result" id="vo2-rockport-result">VO2 max: <strong>&mdash;</strong> mL/kg/min</p>
+                <p class="vo2-formula">Kline et al. (1987): 132.853 &minus; (0.0769 &times; weight in lbs) &minus; (0.3877 &times; age) + (6.315 &times; sex; M=1, F=0) &minus; (3.2649 &times; time) &minus; (0.1565 &times; HR).</p>
+              </div>
+
             </div>
 
             <button id="vo2-calculate" class="vo2-button">Calculate my VO2 max</button>
@@ -1076,13 +1222,22 @@
   </footer>
 
 
-  <script>
+<script>
     (function () {
       const ageEl = document.getElementById('vo2-age');
       const restingHrEl = document.getElementById('vo2-resting-hr');
       const cooperDistEl = document.getElementById('vo2-cooper-dist');
+      const ftpEl = document.getElementById('vo2-ftp');
+      const ftpWeightEl = document.getElementById('vo2-ftp-weight');
+      const rockTimeEl = document.getElementById('vo2-rockport-time');
+      const rockHrEl = document.getElementById('vo2-rockport-hr');
+      const rockWeightEl = document.getElementById('vo2-rockport-weight');
+
       const restingResultEl = document.getElementById('vo2-resting-result');
       const cooperResultEl = document.getElementById('vo2-cooper-result');
+      const ftpResultEl = document.getElementById('vo2-ftp-result');
+      const rockResultEl = document.getElementById('vo2-rockport-result');
+
       const button = document.getElementById('vo2-calculate');
 
       const maleWrap = document.getElementById('vo2-grid-male-wrap');
@@ -1141,38 +1296,84 @@
         }
       }
 
+      function num(el) {
+        if (!el) return NaN;
+        const v = parseFloat(el.value);
+        return isNaN(v) ? NaN : v;
+      }
+
+      function setResult(el, value) {
+        const strong = el.querySelector('strong');
+        if (!isNaN(value) && isFinite(value) && value > 0) {
+          strong.textContent = value.toFixed(1);
+        } else {
+          strong.textContent = '—';
+        }
+      }
+
       maleBtn.addEventListener('click', function () { showGrid('M'); });
       femaleBtn.addEventListener('click', function () { showGrid('F'); });
 
       button.addEventListener('click', function () {
-        const age = parseFloat(ageEl.value);
-        const restingHr = parseFloat(restingHrEl.value);
-        const cooperDist = parseFloat(cooperDistEl.value);
+        const age = num(ageEl);
         const sexInput = document.querySelector('input[name="vo2-sex"]:checked');
         const sex = sexInput ? sexInput.value : 'M';
 
-        let restingVo2 = null;
-        let cooperVo2 = null;
-
+        // Method 1 — Resting HR
+        let restingVo2 = NaN;
+        const restingHr = num(restingHrEl);
         if (!isNaN(age) && !isNaN(restingHr) && restingHr > 0) {
           const hrMax = 208 - (0.7 * age);
           restingVo2 = 15.3 * (hrMax / restingHr);
-          restingResultEl.querySelector('strong').textContent = restingVo2.toFixed(1);
         }
+        setResult(restingResultEl, restingVo2);
 
+        // Method 2 — Cooper 12-min run
+        let cooperVo2 = NaN;
+        const cooperDist = num(cooperDistEl);
         if (!isNaN(cooperDist) && cooperDist > 0) {
           cooperVo2 = (cooperDist - 504.9) / 44.73;
-          if (cooperVo2 < 0) cooperVo2 = 0;
-          cooperResultEl.querySelector('strong').textContent = cooperVo2.toFixed(1);
         }
+        setResult(cooperResultEl, cooperVo2);
 
-        // Auto-show the right grid based on selected sex, then highlight
+        // Method 3 — FTP cycling
+        let ftpVo2 = NaN;
+        const ftp = num(ftpEl);
+        const ftpWeight = num(ftpWeightEl);
+        if (!isNaN(ftp) && !isNaN(ftpWeight) && ftpWeight > 0) {
+          ftpVo2 = (10.8 * ftp / ftpWeight) + 7;
+        }
+        setResult(ftpResultEl, ftpVo2);
+
+        // Method 4 — Rockport walk
+        let rockVo2 = NaN;
+        const rockTime = num(rockTimeEl);
+        const rockHr = num(rockHrEl);
+        const rockWeight = num(rockWeightEl);
+        if (!isNaN(rockTime) && !isNaN(rockHr) && !isNaN(rockWeight) && !isNaN(age)) {
+          const weightLbs = rockWeight * 2.20462;
+          const sexCode = sex === 'F' ? 0 : 1;
+          rockVo2 = 132.853
+                  - (0.0769 * weightLbs)
+                  - (0.3877 * age)
+                  + (6.315 * sexCode)
+                  - (3.2649 * rockTime)
+                  - (0.1565 * rockHr);
+        }
+        setResult(rockResultEl, rockVo2);
+
+        // Show grid for selected sex
         showGrid(sex);
 
-        // Prefer Cooper if both are entered (more accurate)
-        const vo2 = cooperVo2 || restingVo2;
-        if (vo2 && !isNaN(age)) {
-          highlightCell(age, vo2, sex);
+        // Highlight using the user-selected method
+        const useInput = document.querySelector('input[name="vo2-use"]:checked');
+        const useMethod = useInput ? useInput.value : 'resting';
+        const selected = { resting: restingVo2, cooper: cooperVo2, ftp: ftpVo2, rockport: rockVo2 }[useMethod];
+
+        if (selected && !isNaN(selected) && !isNaN(age)) {
+          highlightCell(age, selected, sex);
+        } else {
+          clearHighlights();
         }
       });
 
@@ -1185,7 +1386,13 @@
           }
         });
       });
+
+      // Recalculate (and re-highlight) when the user picks a different method radio
+      document.querySelectorAll('input[name="vo2-use"]').forEach(function (radio) {
+        radio.addEventListener('change', function () { button.click(); });
+      });
     })();
   </script>
+
 </body>
 </html>
