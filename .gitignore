@@ -24,3 +24,9 @@ desktop.ini
 node_modules/
 dist/
 build/
+
+# Never commit secrets — even if accidentally copied into the repo
+.secrets/
+*.pat
+*_token.txt
+*_pat.txt
