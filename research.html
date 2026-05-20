@@ -199,6 +199,311 @@
       color: var(--slate);
     }
 
+    /* ---------- Table of Contents ---------- */
+    .toc {
+      max-width: 720px;
+      margin: 0 auto 48px;
+      padding: 24px 28px;
+      background: var(--paper);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px -12px rgba(20, 32, 40, 0.10),
+                  0 0 0 1px var(--line);
+    }
+    .toc-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: var(--ember);
+      margin-bottom: 14px;
+    }
+    .toc ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+    @media (max-width: 600px) {
+      .toc ol { grid-template-columns: 1fr; }
+    }
+    .toc li {
+      counter-increment: toc;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .toc li:last-child { border-bottom: none; }
+    .toc li::before {
+      content: counter(toc, decimal-leading-zero) " ";
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      color: var(--ember);
+      margin-right: 8px;
+      letter-spacing: 0.04em;
+    }
+    .toc a {
+      color: var(--ink);
+      text-decoration: none;
+      font-family: 'Fraunces', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: var(--ember-deep); }
+
+    /* ---------- VO2 max calculator ---------- */
+    .vo2-calculator {
+      margin: 28px 0 40px;
+      padding: 32px 28px;
+      background: var(--mist);
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+    .vo2-method {
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+    .vo2-method:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .vo2-method h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0 0 8px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .vo2-method > p {
+      color: var(--slate);
+      font-size: 0.96rem;
+      margin: 0 0 16px;
+    }
+    .vo2-inputs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 20px;
+      align-items: flex-end;
+      margin-bottom: 14px;
+    }
+    .vo2-inputs label {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      gap: 6px;
+    }
+    .vo2-inputs input[type="number"] {
+      width: 110px;
+      padding: 8px 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .vo2-inputs input[type="number"]:focus {
+      outline: 2px solid var(--ember);
+      outline-offset: 2px;
+      border-color: var(--ember);
+    }
+    .vo2-inputs fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .vo2-inputs fieldset legend {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0;
+      margin-bottom: 6px;
+    }
+    .vo2-inputs fieldset > div {
+      display: flex;
+      gap: 14px;
+    }
+    .vo2-inputs fieldset label {
+      flex-direction: row;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--ink);
+    }
+    .vo2-result {
+      margin: 14px 0 6px;
+      padding: 12px 16px;
+      background: var(--paper);
+      border-left: 3px solid var(--ember);
+      border-radius: 0 4px 4px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+    .vo2-result strong {
+      font-family: 'Fraunces', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ember);
+      margin: 0 4px;
+    }
+    .vo2-formula {
+      margin: 8px 0 0;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .vo2-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--ember);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 18px;
+    }
+    .vo2-button:hover {
+      background: var(--ember-deep);
+      transform: translateY(-1px);
+    }
+    .vo2-button:focus-visible {
+      outline: 2px solid var(--ember-deep);
+      outline-offset: 3px;
+    }
+
+    /* ---------- VO2 rating grid ---------- */
+    .vo2-grid-wrap {
+      margin: 20px 0 18px;
+      overflow-x: auto;
+    }
+    .vo2-grid {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      min-width: 560px;
+    }
+    .vo2-grid th, .vo2-grid td {
+      padding: 10px 8px;
+      text-align: center;
+      border-radius: 4px;
+      font-variant-numeric: tabular-nums;
+    }
+    .vo2-grid thead th {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-bottom: 6px;
+    }
+    .vo2-grid tbody th {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      color: var(--ink);
+      background: var(--mist);
+      text-align: left;
+      padding-left: 12px;
+      font-size: 0.95rem;
+    }
+    /* Rating column tints — cool to warm */
+    .vo2-grid td:nth-child(2) { background: rgba(92, 102, 112, 0.18); color: var(--ink); }
+    .vo2-grid td:nth-child(3) { background: rgba(92, 102, 112, 0.12); color: var(--ink); }
+    .vo2-grid td:nth-child(4) { background: rgba(120, 138, 124, 0.14); color: var(--ink); }
+    .vo2-grid td:nth-child(5) { background: rgba(120, 138, 124, 0.24); color: var(--ink); }
+    .vo2-grid td:nth-child(6) { background: rgba(217, 122, 58, 0.18); color: var(--ink); }
+    .vo2-grid td:nth-child(7) { background: rgba(217, 122, 58, 0.30); color: var(--ink); font-weight: 600; }
+    .vo2-grid td.highlighted {
+      outline: 2px solid var(--ember);
+      outline-offset: -2px;
+      box-shadow: 0 0 0 4px rgba(217, 122, 58, 0.18);
+      font-weight: 700;
+      color: var(--ember-deep);
+      position: relative;
+    }
+    .vo2-grid td.highlighted::after {
+      content: 'YOU';
+      position: absolute;
+      top: -8px;
+      right: -2px;
+      background: var(--ember);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+    .vo2-caveat {
+      margin-top: 16px;
+      padding: 14px 18px;
+      background: var(--mist);
+      border-left: 3px solid var(--muted);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.92rem;
+      color: var(--slate);
+      font-style: italic;
+    }
+    .vo2-grid-toggle {
+      display: inline-flex;
+      gap: 4px;
+      margin-bottom: 14px;
+      padding: 4px;
+      background: var(--mist);
+      border-radius: 6px;
+      border: 1px solid var(--line);
+    }
+    .vo2-grid-toggle button {
+      padding: 6px 14px;
+      background: transparent;
+      color: var(--muted);
+      border: none;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.04em;
+    }
+    .vo2-grid-toggle button.active {
+      background: var(--paper);
+      color: var(--ink);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
     /* ---------- Ikigai section ---------- */
     .ikigai {
       background: var(--paper);
@@ -367,6 +672,17 @@
         <p class="lede">The Society's program model is built on real studies. Below are the papers we cite most often, with direct links to the originals and plain-language summaries of what they actually found.</p>
       </header>
 
+      <nav class="toc" aria-label="On this page">
+        <div class="toc-eyebrow">On this page</div>
+        <ol>
+          <li><a href="#fitness">Cardiorespiratory fitness &amp; longevity</a></li>
+          <li><a href="#vo2max">VO2 max calculator</a></li>
+          <li><a href="#connection">Social connection &amp; mortality</a></li>
+          <li><a href="#adherence">Group exercise adherence</a></li>
+          <li><a href="#ikigai">Ikigai</a></li>
+        </ol>
+      </nav>
+
       <div class="container">
 
         <!-- ========= FITNESS ========= -->
@@ -387,6 +703,219 @@
           <h3>Why it matters for the Society</h3>
           <p>Programs that improve cardiorespiratory fitness — running, cycling, hiking, sustained activity of any kind — are among the most consequential things adults can do for their long-term health. The dividend compounds most steeply in the 30–50 window, exactly when most men's fitness quietly declines.</p>
         </article>
+
+        <!-- ========= VO2 MAX CALCULATOR ========= -->
+        <article class="study" id="vo2max">
+          <div class="study-eyebrow">Measure it yourself</div>
+          <h2>Estimate your VO2 max — two methods from home.</h2>
+
+          <p>The research above is striking, but it stays abstract until you know your own number. A proper VO2 max measurement requires a lab, a treadmill, and a mask collecting exhaled gas. Two at-home methods get within reasonable range — useful for tracking change over months, not for clinical precision.</p>
+
+          <div class="vo2-calculator">
+            <div class="vo2-method">
+              <h3>Method 1 — Resting heart rate (easiest)</h3>
+              <p>No exercise required. Count your pulse for 60 seconds, sitting still, first thing in the morning before coffee. Repeat over a few days and use the average. Then enter the numbers below.</p>
+
+              <div class="vo2-inputs">
+                <label>Age (years)
+                  <input type="number" id="vo2-age" min="15" max="90" value="35" inputmode="numeric">
+                </label>
+                <fieldset>
+                  <legend>Biological sex</legend>
+                  <div>
+                    <label><input type="radio" name="vo2-sex" value="M" checked> Male</label>
+                    <label><input type="radio" name="vo2-sex" value="F"> Female</label>
+                  </div>
+                </fieldset>
+                <label>Resting HR (bpm)
+                  <input type="number" id="vo2-resting-hr" min="30" max="120" value="60" inputmode="numeric">
+                </label>
+              </div>
+
+              <p class="vo2-result" id="vo2-resting-result">
+                Estimated VO2 max from resting heart rate: <strong>—</strong> mL/kg/min
+              </p>
+
+              <p class="vo2-formula">Uth-S&oslash;rensen-Overgaard-Pedersen (2004): VO2max &approx; 15.3 &times; (HRmax / HRrest), where HRmax &approx; 208 &minus; (0.7 &times; age) per Tanaka et al. (2001).</p>
+            </div>
+
+            <div class="vo2-method">
+              <h3>Method 2 — Cooper 12-minute run (more accurate)</h3>
+              <p>Requires a measured distance (a 400 m track works perfectly, or a road with a GPS watch). Run as far as you can in 12 minutes &mdash; walking breaks allowed, but the goal is maximum distance covered. Enter total distance below.</p>
+
+              <div class="vo2-inputs">
+                <label>Distance in 12 minutes (m)
+                  <input type="number" id="vo2-cooper-dist" min="500" max="5000" step="50" value="2400" inputmode="numeric">
+                </label>
+              </div>
+
+              <p class="vo2-result" id="vo2-cooper-result">
+                Estimated VO2 max from Cooper test: <strong>&mdash;</strong> mL/kg/min
+              </p>
+
+              <p class="vo2-formula">Cooper (1968): VO2max = (distance in metres &minus; 504.9) / 44.73.</p>
+            </div>
+
+            <button id="vo2-calculate" class="vo2-button">Calculate my VO2 max</button>
+          </div>
+
+          <h3>Where do you sit?</h3>
+          <p>Standard age-graded ranges from the Cooper Institute / ACSM norms. The Cooper test result above is more accurate, so it&rsquo;s used to highlight your cell when both methods are filled in.</p>
+
+          <div class="vo2-grid-toggle" role="tablist" aria-label="Switch between male and female rating grids">
+            <button id="vo2-grid-male" class="active" role="tab" aria-selected="true">Male</button>
+            <button id="vo2-grid-female" role="tab" aria-selected="false">Female</button>
+          </div>
+
+          <div class="vo2-grid-wrap" id="vo2-grid-male-wrap">
+            <table class="vo2-grid" aria-label="VO2 max ranges for men by age">
+              <thead>
+                <tr>
+                  <th scope="col">Age</th>
+                  <th scope="col">Very poor</th>
+                  <th scope="col">Poor</th>
+                  <th scope="col">Fair</th>
+                  <th scope="col">Good</th>
+                  <th scope="col">Excellent</th>
+                  <th scope="col">Superior</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-age-band="20-29">
+                  <th scope="row">20&ndash;29</th>
+                  <td data-range="0-37">&lt;38</td>
+                  <td data-range="38-43">38&ndash;43</td>
+                  <td data-range="44-50">44&ndash;50</td>
+                  <td data-range="51-56">51&ndash;56</td>
+                  <td data-range="57-62">57&ndash;62</td>
+                  <td data-range="63-200">&gt;62</td>
+                </tr>
+                <tr data-age-band="30-39">
+                  <th scope="row">30&ndash;39</th>
+                  <td data-range="0-33">&lt;34</td>
+                  <td data-range="34-39">34&ndash;39</td>
+                  <td data-range="40-46">40&ndash;46</td>
+                  <td data-range="47-52">47&ndash;52</td>
+                  <td data-range="53-58">53&ndash;58</td>
+                  <td data-range="59-200">&gt;58</td>
+                </tr>
+                <tr data-age-band="40-49">
+                  <th scope="row">40&ndash;49</th>
+                  <td data-range="0-29">&lt;30</td>
+                  <td data-range="30-35">30&ndash;35</td>
+                  <td data-range="36-42">36&ndash;42</td>
+                  <td data-range="43-48">43&ndash;48</td>
+                  <td data-range="49-54">49&ndash;54</td>
+                  <td data-range="55-200">&gt;54</td>
+                </tr>
+                <tr data-age-band="50-59">
+                  <th scope="row">50&ndash;59</th>
+                  <td data-range="0-24">&lt;25</td>
+                  <td data-range="25-30">25&ndash;30</td>
+                  <td data-range="31-38">31&ndash;38</td>
+                  <td data-range="39-44">39&ndash;44</td>
+                  <td data-range="45-50">45&ndash;50</td>
+                  <td data-range="51-200">&gt;50</td>
+                </tr>
+                <tr data-age-band="60-69">
+                  <th scope="row">60&ndash;69</th>
+                  <td data-range="0-20">&lt;21</td>
+                  <td data-range="21-26">21&ndash;26</td>
+                  <td data-range="27-34">27&ndash;34</td>
+                  <td data-range="35-40">35&ndash;40</td>
+                  <td data-range="41-46">41&ndash;46</td>
+                  <td data-range="47-200">&gt;46</td>
+                </tr>
+                <tr data-age-band="70+">
+                  <th scope="row">70+</th>
+                  <td data-range="0-16">&lt;17</td>
+                  <td data-range="17-21">17&ndash;21</td>
+                  <td data-range="22-29">22&ndash;29</td>
+                  <td data-range="30-36">30&ndash;36</td>
+                  <td data-range="37-44">37&ndash;44</td>
+                  <td data-range="45-200">&gt;44</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="vo2-grid-wrap" id="vo2-grid-female-wrap" style="display:none">
+            <table class="vo2-grid" aria-label="VO2 max ranges for women by age">
+              <thead>
+                <tr>
+                  <th scope="col">Age</th>
+                  <th scope="col">Very poor</th>
+                  <th scope="col">Poor</th>
+                  <th scope="col">Fair</th>
+                  <th scope="col">Good</th>
+                  <th scope="col">Excellent</th>
+                  <th scope="col">Superior</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-age-band="20-29">
+                  <th scope="row">20&ndash;29</th>
+                  <td data-range="0-30">&lt;31</td>
+                  <td data-range="31-34">31&ndash;34</td>
+                  <td data-range="35-40">35&ndash;40</td>
+                  <td data-range="41-46">41&ndash;46</td>
+                  <td data-range="47-51">47&ndash;51</td>
+                  <td data-range="52-200">&gt;51</td>
+                </tr>
+                <tr data-age-band="30-39">
+                  <th scope="row">30&ndash;39</th>
+                  <td data-range="0-27">&lt;28</td>
+                  <td data-range="28-32">28&ndash;32</td>
+                  <td data-range="33-37">33&ndash;37</td>
+                  <td data-range="38-42">38&ndash;42</td>
+                  <td data-range="43-48">43&ndash;48</td>
+                  <td data-range="49-200">&gt;48</td>
+                </tr>
+                <tr data-age-band="40-49">
+                  <th scope="row">40&ndash;49</th>
+                  <td data-range="0-24">&lt;25</td>
+                  <td data-range="25-29">25&ndash;29</td>
+                  <td data-range="30-34">30&ndash;34</td>
+                  <td data-range="35-39">35&ndash;39</td>
+                  <td data-range="40-44">40&ndash;44</td>
+                  <td data-range="45-200">&gt;44</td>
+                </tr>
+                <tr data-age-band="50-59">
+                  <th scope="row">50&ndash;59</th>
+                  <td data-range="0-20">&lt;21</td>
+                  <td data-range="21-25">21&ndash;25</td>
+                  <td data-range="26-29">26&ndash;29</td>
+                  <td data-range="30-34">30&ndash;34</td>
+                  <td data-range="35-39">35&ndash;39</td>
+                  <td data-range="40-200">&gt;39</td>
+                </tr>
+                <tr data-age-band="60-69">
+                  <th scope="row">60&ndash;69</th>
+                  <td data-range="0-18">&lt;19</td>
+                  <td data-range="19-21">19&ndash;21</td>
+                  <td data-range="22-26">22&ndash;26</td>
+                  <td data-range="27-31">27&ndash;31</td>
+                  <td data-range="32-37">32&ndash;37</td>
+                  <td data-range="38-200">&gt;37</td>
+                </tr>
+                <tr data-age-band="70+">
+                  <th scope="row">70+</th>
+                  <td data-range="0-16">&lt;17</td>
+                  <td data-range="17-19">17&ndash;19</td>
+                  <td data-range="20-24">20&ndash;24</td>
+                  <td data-range="25-29">25&ndash;29</td>
+                  <td data-range="30-34">30&ndash;34</td>
+                  <td data-range="35-200">&gt;34</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="vo2-caveat">All numbers are mL/kg/min. These are estimates from indirect methods &mdash; a direct lab test (treadmill or cycle ergometer with a mask measuring exhaled oxygen) is the only way to get a true reading, with error in the 1&ndash;2 mL/kg/min range. The at-home methods carry roughly &plusmn;3&ndash;5 mL/kg/min uncertainty. For tracking your own change over months, either method is consistent enough to be useful.</p>
+
+          <p>Norms drawn from the Cooper Institute / American College of Sports Medicine, as compiled in <em>ACSM&rsquo;s Guidelines for Exercise Testing and Prescription</em> (10th ed., 2018) and Heyward&rsquo;s <em>Advanced Fitness Assessment and Exercise Prescription</em>.</p>
+        </article>
+
 
         <!-- ========= SOCIAL CONNECTION ========= -->
         <article class="study" id="connection">
@@ -546,5 +1075,117 @@
     </div>
   </footer>
 
+
+  <script>
+    (function () {
+      const ageEl = document.getElementById('vo2-age');
+      const restingHrEl = document.getElementById('vo2-resting-hr');
+      const cooperDistEl = document.getElementById('vo2-cooper-dist');
+      const restingResultEl = document.getElementById('vo2-resting-result');
+      const cooperResultEl = document.getElementById('vo2-cooper-result');
+      const button = document.getElementById('vo2-calculate');
+
+      const maleWrap = document.getElementById('vo2-grid-male-wrap');
+      const femaleWrap = document.getElementById('vo2-grid-female-wrap');
+      const maleBtn = document.getElementById('vo2-grid-male');
+      const femaleBtn = document.getElementById('vo2-grid-female');
+
+      function clearHighlights() {
+        document.querySelectorAll('.vo2-grid td.highlighted').forEach(function (el) {
+          el.classList.remove('highlighted');
+        });
+      }
+
+      function bandFor(age) {
+        if (age < 30) return '20-29';
+        if (age < 40) return '30-39';
+        if (age < 50) return '40-49';
+        if (age < 60) return '50-59';
+        if (age < 70) return '60-69';
+        return '70+';
+      }
+
+      function highlightCell(age, vo2, sex) {
+        clearHighlights();
+        const wrap = sex === 'F' ? femaleWrap : maleWrap;
+        const row = wrap.querySelector('tr[data-age-band="' + bandFor(age) + '"]');
+        if (!row) return;
+        const v = Math.round(vo2);
+        const cells = row.querySelectorAll('td[data-range]');
+        for (let i = 0; i < cells.length; i++) {
+          const parts = cells[i].dataset.range.split('-');
+          const lo = parseInt(parts[0], 10);
+          const hi = parseInt(parts[1], 10);
+          if (v >= lo && v <= hi) {
+            cells[i].classList.add('highlighted');
+            return;
+          }
+        }
+      }
+
+      function showGrid(sex) {
+        if (sex === 'F') {
+          maleWrap.style.display = 'none';
+          femaleWrap.style.display = '';
+          maleBtn.classList.remove('active');
+          femaleBtn.classList.add('active');
+          maleBtn.setAttribute('aria-selected', 'false');
+          femaleBtn.setAttribute('aria-selected', 'true');
+        } else {
+          maleWrap.style.display = '';
+          femaleWrap.style.display = 'none';
+          maleBtn.classList.add('active');
+          femaleBtn.classList.remove('active');
+          maleBtn.setAttribute('aria-selected', 'true');
+          femaleBtn.setAttribute('aria-selected', 'false');
+        }
+      }
+
+      maleBtn.addEventListener('click', function () { showGrid('M'); });
+      femaleBtn.addEventListener('click', function () { showGrid('F'); });
+
+      button.addEventListener('click', function () {
+        const age = parseFloat(ageEl.value);
+        const restingHr = parseFloat(restingHrEl.value);
+        const cooperDist = parseFloat(cooperDistEl.value);
+        const sexInput = document.querySelector('input[name="vo2-sex"]:checked');
+        const sex = sexInput ? sexInput.value : 'M';
+
+        let restingVo2 = null;
+        let cooperVo2 = null;
+
+        if (!isNaN(age) && !isNaN(restingHr) && restingHr > 0) {
+          const hrMax = 208 - (0.7 * age);
+          restingVo2 = 15.3 * (hrMax / restingHr);
+          restingResultEl.querySelector('strong').textContent = restingVo2.toFixed(1);
+        }
+
+        if (!isNaN(cooperDist) && cooperDist > 0) {
+          cooperVo2 = (cooperDist - 504.9) / 44.73;
+          if (cooperVo2 < 0) cooperVo2 = 0;
+          cooperResultEl.querySelector('strong').textContent = cooperVo2.toFixed(1);
+        }
+
+        // Auto-show the right grid based on selected sex, then highlight
+        showGrid(sex);
+
+        // Prefer Cooper if both are entered (more accurate)
+        const vo2 = cooperVo2 || restingVo2;
+        if (vo2 && !isNaN(age)) {
+          highlightCell(age, vo2, sex);
+        }
+      });
+
+      // Allow Enter inside any input to trigger calculation
+      document.querySelectorAll('.vo2-inputs input').forEach(function (inp) {
+        inp.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            button.click();
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
