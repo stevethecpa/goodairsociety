@@ -403,96 +403,307 @@
     }
 
 
-    /* ---------- VO2 personal info bar ---------- */
-    .vo2-personal {
-      padding: 14px 18px;
+    /* ---------- VO2 guided flow ---------- */
+    .vo2-step {
+      position: relative;
+      padding: 24px 24px 20px 78px;
+      margin-bottom: 18px;
       background: var(--paper);
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+    .vo2-step:last-child { margin-bottom: 0; }
+    .vo2-step-num {
+      position: absolute;
+      top: 22px;
+      left: 24px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--ember);
+      color: #fff;
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0.04em;
+    }
+    .vo2-step h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0 0 6px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .vo2-step-help {
+      color: var(--slate);
+      font-size: 0.94rem;
+      margin: 0 0 18px;
+    }
+    .vo2-picker {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 720px) {
+      .vo2-picker { grid-template-columns: 1fr; }
+    }
+    .vo2-pick { cursor: pointer; display: block; }
+    .vo2-pick input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .vo2-pick-card {
+      padding: 18px 18px 16px;
+      background: var(--mist);
+      border: 2px solid var(--line);
+      border-radius: 6px;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      height: 100%;
+      position: relative;
+    }
+    .vo2-pick:hover .vo2-pick-card {
+      border-color: rgba(217, 122, 58, 0.5);
+      transform: translateY(-2px);
+    }
+    .vo2-pick input[type="radio"]:checked ~ .vo2-pick-card {
+      border-color: var(--ember);
+      background: var(--paper);
+      box-shadow: 0 0 0 3px rgba(217, 122, 58, 0.16),
+                  0 4px 16px -8px rgba(20, 32, 40, 0.15);
+    }
+    .vo2-pick input[type="radio"]:checked ~ .vo2-pick-card::after {
+      content: '\2713';
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--ember);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vo2-pick input[type="radio"]:focus-visible ~ .vo2-pick-card {
+      outline: 2px solid var(--ember);
+      outline-offset: 3px;
+    }
+    .vo2-pick-num {
+      font-family: 'Fraunces', serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--ember);
+      margin-bottom: 6px;
+    }
+    .vo2-pick-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .vo2-pick-desc {
+      font-size: 0.9rem;
+      color: var(--slate);
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+    .vo2-pick-best {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .vo2-input-block {
+      margin-top: 14px;
+      padding: 16px 18px;
+      background: var(--mist);
       border-radius: 6px;
       border: 1px solid var(--line);
-      margin-bottom: 20px;
+    }
+    .vo2-input-block-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ember);
+      margin-bottom: 10px;
+    }
+    .vo2-input-block-shared {
+      background: var(--paper);
+      border-color: var(--line);
+    }
+    .vo2-inputs {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
+      gap: 14px 20px;
+      align-items: flex-end;
+      margin: 0;
     }
-    .vo2-personal-label {
+    .vo2-inputs label {
+      display: flex;
+      flex-direction: column;
       font-family: 'Inter', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      gap: 6px;
+    }
+    .vo2-inputs input[type="number"] {
+      width: 120px;
+      padding: 8px 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .vo2-inputs input[type="number"]:focus {
+      outline: 2px solid var(--ember);
+      outline-offset: 2px;
+      border-color: var(--ember);
+    }
+    .vo2-inputs fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .vo2-inputs fieldset legend {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0;
+      margin-bottom: 6px;
+    }
+    .vo2-inputs fieldset > div { display: flex; gap: 14px; }
+    .vo2-inputs fieldset label {
+      flex-direction: row;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--ink);
+    }
+    .vo2-weight-input {
+      display: inline-flex;
+      align-items: stretch;
+    }
+    .vo2-weight-input input[type="number"] {
+      width: 90px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right: none;
+    }
+    .vo2-weight-unit {
+      padding: 8px 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--ink);
+      background: var(--mist);
+      border: 1px solid var(--line);
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      cursor: pointer;
+    }
+    .vo2-weight-unit:focus {
+      outline: 2px solid var(--ember);
+      outline-offset: 2px;
+    }
+    .vo2-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 26px;
+      background: var(--ember);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.96rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .vo2-button:hover {
+      background: var(--ember-deep);
+      transform: translateY(-1px);
+    }
+    .vo2-button:focus-visible {
+      outline: 2px solid var(--ember-deep);
+      outline-offset: 3px;
+    }
+    .vo2-result-final {
+      margin-top: 18px;
+      padding: 20px 24px;
+      background: linear-gradient(135deg, rgba(217, 122, 58, 0.10), rgba(217, 122, 58, 0.04));
+      border-left: 4px solid var(--ember);
+      border-radius: 0 6px 6px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .vo2-result-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--ember);
+      color: var(--ember-deep);
     }
-    .vo2-personal .vo2-inputs {
-      margin: 0;
-      flex: 1;
+    .vo2-result-value {
+      font-family: 'Fraunces', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.05;
+    }
+    .vo2-result-value strong {
+      color: var(--ember);
+      font-weight: 700;
+    }
+    .vo2-result-unit {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .vo2-result-method {
+      font-size: 0.88rem;
+      color: var(--slate);
+      font-style: italic;
+    }
+    .vo2-formula {
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.5;
     }
 
-    /* ---------- 2x2 methods grid ---------- */
-    .vo2-methods-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-bottom: 4px;
-    }
-    @media (max-width: 720px) {
-      .vo2-methods-grid { grid-template-columns: 1fr; }
-    }
-    .vo2-methods-grid .vo2-method {
-      margin-bottom: 0;
-      padding: 22px 20px;
-      border: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      border-radius: 6px;
-      background: var(--paper);
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
-    .vo2-methods-grid .vo2-method:has(input[name="vo2-use"]:checked) {
-      border-color: var(--ember);
-      box-shadow: 0 0 0 2px rgba(217, 122, 58, 0.15);
-    }
-    .vo2-method-pick {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      color: var(--muted);
-      cursor: pointer;
-      padding: 4px 8px 4px 6px;
-      border-radius: 4px;
-      background: var(--mist);
-      text-transform: uppercase;
-      transition: color 0.2s, background 0.2s;
-    }
-    .vo2-method-pick:hover { color: var(--ink); }
-    .vo2-method-pick input[type="radio"] { margin: 0; cursor: pointer; accent-color: var(--ember); }
-    .vo2-methods-grid .vo2-method:has(input[name="vo2-use"]:checked) .vo2-method-pick {
-      color: var(--ember-deep);
-      background: rgba(217, 122, 58, 0.14);
-    }
-    .vo2-methods-grid .vo2-method h3 {
-      margin: 4px 0 6px;
-      padding-right: 130px;
-    }
-    .vo2-methods-grid .vo2-method > p {
-      margin-bottom: 12px;
-      font-size: 0.92rem;
-    }
-    .vo2-methods-grid .vo2-result {
-      margin-top: auto;
-    }
-    .vo2-methods-grid .vo2-formula {
-      margin-top: 8px;
-    }
     /* ---------- VO2 rating grid ---------- */
     .vo2-grid-wrap {
       margin: 20px 0 18px;
@@ -803,88 +1014,118 @@
           <p>The research above is striking, but it stays abstract until you know your own number. A proper VO2 max measurement requires a lab, a treadmill, and a mask collecting exhaled gas. Two at-home methods get within reasonable range — useful for tracking change over months, not for clinical precision.</p>
 
           <div class="vo2-calculator">
-            <!-- Personal info (shared by methods that need age/sex) -->
-            <div class="vo2-personal">
-              <div class="vo2-personal-label">Your info</div>
-              <div class="vo2-inputs">
-                <label>Age (years)
-                  <input type="number" id="vo2-age" min="15" max="90" value="35" inputmode="numeric">
-                </label>
-                <fieldset>
-                  <legend>Biological sex</legend>
-                  <div>
-                    <label><input type="radio" name="vo2-sex" value="M" checked> Male</label>
-                    <label><input type="radio" name="vo2-sex" value="F"> Female</label>
+
+            <!-- Step 1: pick your method -->
+            <div class="vo2-step">
+              <div class="vo2-step-num">01</div>
+              <h3>Pick your method</h3>
+              <p class="vo2-step-help">Read the four options below and choose the one that suits how you train (or don't train) right now. You'll only enter the inputs for the method you pick.</p>
+
+              <div class="vo2-picker">
+                <label class="vo2-pick">
+                  <input type="radio" name="vo2-method" value="resting" checked>
+                  <div class="vo2-pick-card">
+                    <div class="vo2-pick-num">01</div>
+                    <div class="vo2-pick-title">Resting heart rate</div>
+                    <div class="vo2-pick-desc">Easiest. No exercise. Take your pulse for 60 seconds seated, in the morning before coffee. Average over a few days.</div>
+                    <div class="vo2-pick-best">Best for: anyone, especially if you don&rsquo;t currently train.</div>
                   </div>
-                </fieldset>
+                </label>
+
+                <label class="vo2-pick">
+                  <input type="radio" name="vo2-method" value="cooper">
+                  <div class="vo2-pick-card">
+                    <div class="vo2-pick-num">02</div>
+                    <div class="vo2-pick-title">Cooper 12-min run</div>
+                    <div class="vo2-pick-desc">Run as far as you can in 12 minutes. Walking breaks allowed; maximum distance is the goal.</div>
+                    <div class="vo2-pick-best">Best for: runners with a 400 m track or a GPS watch.</div>
+                  </div>
+                </label>
+
+                <label class="vo2-pick">
+                  <input type="radio" name="vo2-method" value="ftp">
+                  <div class="vo2-pick-card">
+                    <div class="vo2-pick-num">03</div>
+                    <div class="vo2-pick-title">FTP cycling test</div>
+                    <div class="vo2-pick-desc">Take a standard 20-minute FTP test on a Peloton, Wahoo, Zwift, or any power meter. Enter the resulting FTP wattage.</div>
+                    <div class="vo2-pick-best">Best for: cyclists with access to a power meter.</div>
+                  </div>
+                </label>
+
+                <label class="vo2-pick">
+                  <input type="radio" name="vo2-method" value="rockport">
+                  <div class="vo2-pick-card">
+                    <div class="vo2-pick-num">04</div>
+                    <div class="vo2-pick-title">Rockport 1-mile walk</div>
+                    <div class="vo2-pick-desc">Walk a measured mile (1.6 km, four laps of a track) as fast as possible. Time it. Note your heart rate at the finish line.</div>
+                    <div class="vo2-pick-best">Best for: anyone who can walk briskly. Joint-friendly.</div>
+                  </div>
+                </label>
               </div>
             </div>
 
-            <!-- 2x2 grid of estimation methods -->
-            <div class="vo2-methods-grid">
+            <!-- Step 2: enter your numbers -->
+            <div class="vo2-step">
+              <div class="vo2-step-num">02</div>
+              <h3>Enter your numbers</h3>
+              <p class="vo2-step-help">Only the inputs for your selected method are shown.</p>
 
-              <!-- Method 1 — Resting HR -->
-              <div class="vo2-method">
-                <label class="vo2-method-pick">
-                  <input type="radio" name="vo2-use" value="resting" checked>
-                  <span>Use this for grid</span>
-                </label>
-                <h3>1. Resting heart rate</h3>
-                <p>Easiest. Pulse for 60 seconds, seated, mornings. Average a few days.</p>
+              <!-- Shared age & sex (always visible — used by every method's grading even if not its formula) -->
+              <div class="vo2-input-block vo2-input-block-shared">
+                <div class="vo2-input-block-label">About you</div>
                 <div class="vo2-inputs">
-                  <label>Resting HR (bpm)
+                  <label>Age (years)
+                    <input type="number" id="vo2-age" min="15" max="90" value="35" inputmode="numeric">
+                  </label>
+                  <fieldset>
+                    <legend>Biological sex</legend>
+                    <div>
+                      <label><input type="radio" name="vo2-sex" value="M" checked> Male</label>
+                      <label><input type="radio" name="vo2-sex" value="F"> Female</label>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+
+              <!-- Method-specific input panels (toggled by JS based on selection) -->
+              <div class="vo2-input-block" data-method-inputs="resting">
+                <div class="vo2-input-block-label">Method 1 inputs</div>
+                <div class="vo2-inputs">
+                  <label>Resting heart rate (bpm)
                     <input type="number" id="vo2-resting-hr" min="30" max="120" value="60" inputmode="numeric">
                   </label>
                 </div>
-                <p class="vo2-result" id="vo2-resting-result">VO2 max: <strong>&mdash;</strong> mL/kg/min</p>
-                <p class="vo2-formula">Uth-S&oslash;rensen-Overgaard-Pedersen (2004): 15.3 &times; (HRmax / HRrest). HRmax = 208 &minus; (0.7 &times; age) per Tanaka et al. (2001).</p>
               </div>
 
-              <!-- Method 2 — Cooper 12-min run -->
-              <div class="vo2-method">
-                <label class="vo2-method-pick">
-                  <input type="radio" name="vo2-use" value="cooper">
-                  <span>Use this for grid</span>
-                </label>
-                <h3>2. Cooper 12-min run</h3>
-                <p>Run as far as you can in 12 minutes. Track or GPS works.</p>
+              <div class="vo2-input-block" data-method-inputs="cooper" hidden>
+                <div class="vo2-input-block-label">Method 2 inputs</div>
                 <div class="vo2-inputs">
-                  <label>Distance in 12 min (m)
+                  <label>Distance in 12 minutes (m)
                     <input type="number" id="vo2-cooper-dist" min="500" max="5000" step="50" value="2400" inputmode="numeric">
                   </label>
                 </div>
-                <p class="vo2-result" id="vo2-cooper-result">VO2 max: <strong>&mdash;</strong> mL/kg/min</p>
-                <p class="vo2-formula">Cooper (1968): (distance in metres &minus; 504.9) / 44.73.</p>
               </div>
 
-              <!-- Method 3 — FTP cycling test -->
-              <div class="vo2-method">
-                <label class="vo2-method-pick">
-                  <input type="radio" name="vo2-use" value="ftp">
-                  <span>Use this for grid</span>
-                </label>
-                <h3>3. FTP cycling test</h3>
-                <p>Take a 20-minute FTP test on a Peloton, Wahoo, or any power meter. Enter the resulting FTP (in watts) and your body weight.</p>
+              <div class="vo2-input-block" data-method-inputs="ftp" hidden>
+                <div class="vo2-input-block-label">Method 3 inputs</div>
                 <div class="vo2-inputs">
                   <label>FTP (watts)
                     <input type="number" id="vo2-ftp" min="50" max="600" value="220" inputmode="numeric">
                   </label>
-                  <label>Body weight (kg)
-                    <input type="number" id="vo2-ftp-weight" min="40" max="180" step="0.5" value="80" inputmode="decimal">
+                  <label>Body weight
+                    <span class="vo2-weight-input">
+                      <input type="number" id="vo2-weight-ftp" min="40" max="450" step="0.5" value="80" inputmode="decimal">
+                      <select class="vo2-weight-unit" data-target="vo2-weight-ftp" aria-label="Weight unit">
+                        <option value="kg" selected>kg</option>
+                        <option value="lbs">lbs</option>
+                      </select>
+                    </span>
                   </label>
                 </div>
-                <p class="vo2-result" id="vo2-ftp-result">VO2 max: <strong>&mdash;</strong> mL/kg/min</p>
-                <p class="vo2-formula">Allen &amp; Coggan model: 10.8 &times; (FTP / weight) + 7. Approximation for trained cyclists; accuracy improves with higher fitness.</p>
               </div>
 
-              <!-- Method 4 — Rockport 1-mile walk -->
-              <div class="vo2-method">
-                <label class="vo2-method-pick">
-                  <input type="radio" name="vo2-use" value="rockport">
-                  <span>Use this for grid</span>
-                </label>
-                <h3>4. Rockport 1-mile walk</h3>
-                <p>Walk one mile (1.6 km) as fast as you can &mdash; no running. Note the finish time and the heart rate at the line.</p>
+              <div class="vo2-input-block" data-method-inputs="rockport" hidden>
+                <div class="vo2-input-block-label">Method 4 inputs</div>
                 <div class="vo2-inputs">
                   <label>Walk time (min)
                     <input type="number" id="vo2-rockport-time" min="6" max="30" step="0.1" value="13.5" inputmode="decimal">
@@ -892,17 +1133,36 @@
                   <label>HR at finish (bpm)
                     <input type="number" id="vo2-rockport-hr" min="60" max="220" value="140" inputmode="numeric">
                   </label>
-                  <label>Body weight (kg)
-                    <input type="number" id="vo2-rockport-weight" min="40" max="180" step="0.5" value="80" inputmode="decimal">
+                  <label>Body weight
+                    <span class="vo2-weight-input">
+                      <input type="number" id="vo2-weight-rockport" min="40" max="450" step="0.5" value="80" inputmode="decimal">
+                      <select class="vo2-weight-unit" data-target="vo2-weight-rockport" aria-label="Weight unit">
+                        <option value="kg" selected>kg</option>
+                        <option value="lbs">lbs</option>
+                      </select>
+                    </span>
                   </label>
                 </div>
-                <p class="vo2-result" id="vo2-rockport-result">VO2 max: <strong>&mdash;</strong> mL/kg/min</p>
-                <p class="vo2-formula">Kline et al. (1987): 132.853 &minus; (0.0769 &times; weight in lbs) &minus; (0.3877 &times; age) + (6.315 &times; sex; M=1, F=0) &minus; (3.2649 &times; time) &minus; (0.1565 &times; HR).</p>
               </div>
-
             </div>
 
-            <button id="vo2-calculate" class="vo2-button">Calculate my VO2 max</button>
+            <!-- Step 3: calculate -->
+            <div class="vo2-step">
+              <div class="vo2-step-num">03</div>
+              <h3>Calculate</h3>
+              <p class="vo2-step-help">The grid below will highlight where you sit based on your age, sex, and result.</p>
+
+              <button id="vo2-calculate" class="vo2-button">Calculate my VO2 max</button>
+
+              <div class="vo2-result-final" id="vo2-result-final" hidden>
+                <span class="vo2-result-eyebrow">Your estimated VO2 max</span>
+                <span class="vo2-result-value"><strong>&mdash;</strong> <span class="vo2-result-unit">mL/kg/min</span></span>
+                <span class="vo2-result-method"></span>
+              </div>
+
+              <p class="vo2-formula" id="vo2-formula-display"></p>
+            </div>
+
           </div>
 
           <h3>Where do you sit?</h3>
@@ -1224,26 +1484,71 @@
 
 <script>
     (function () {
+      const methodMeta = {
+        resting: {
+          label: 'Method 1 — Resting heart rate',
+          formula: 'Uth-Sørensen-Overgaard-Pedersen (2004): 15.3 × (HRmax / HRrest), where HRmax = 208 − (0.7 × age) per Tanaka et al. (2001).'
+        },
+        cooper: {
+          label: 'Method 2 — Cooper 12-minute run',
+          formula: 'Cooper (1968): VO2max = (distance in metres − 504.9) / 44.73.'
+        },
+        ftp: {
+          label: 'Method 3 — FTP cycling test',
+          formula: 'Allen & Coggan model: VO2max ≈ 10.8 × (FTP / weight in kg) + 7. Approximation for trained cyclists.'
+        },
+        rockport: {
+          label: 'Method 4 — Rockport 1-mile walk',
+          formula: 'Kline et al. (1987): 132.853 − (0.0769 × weight in lbs) − (0.3877 × age) + (6.315 × sex; M=1, F=0) − (3.2649 × time in min) − (0.1565 × HR at finish).'
+        }
+      };
+
       const ageEl = document.getElementById('vo2-age');
       const restingHrEl = document.getElementById('vo2-resting-hr');
       const cooperDistEl = document.getElementById('vo2-cooper-dist');
       const ftpEl = document.getElementById('vo2-ftp');
-      const ftpWeightEl = document.getElementById('vo2-ftp-weight');
+      const ftpWeightEl = document.getElementById('vo2-weight-ftp');
       const rockTimeEl = document.getElementById('vo2-rockport-time');
       const rockHrEl = document.getElementById('vo2-rockport-hr');
-      const rockWeightEl = document.getElementById('vo2-rockport-weight');
-
-      const restingResultEl = document.getElementById('vo2-resting-result');
-      const cooperResultEl = document.getElementById('vo2-cooper-result');
-      const ftpResultEl = document.getElementById('vo2-ftp-result');
-      const rockResultEl = document.getElementById('vo2-rockport-result');
+      const rockWeightEl = document.getElementById('vo2-weight-rockport');
 
       const button = document.getElementById('vo2-calculate');
+      const finalResult = document.getElementById('vo2-result-final');
+      const formulaDisplay = document.getElementById('vo2-formula-display');
 
       const maleWrap = document.getElementById('vo2-grid-male-wrap');
       const femaleWrap = document.getElementById('vo2-grid-female-wrap');
       const maleBtn = document.getElementById('vo2-grid-male');
       const femaleBtn = document.getElementById('vo2-grid-female');
+
+      function selectedMethod() {
+        const r = document.querySelector('input[name="vo2-method"]:checked');
+        return r ? r.value : 'resting';
+      }
+
+      function showInputPanel(method) {
+        document.querySelectorAll('[data-method-inputs]').forEach(function (p) {
+          if (p.dataset.methodInputs === method) {
+            p.removeAttribute('hidden');
+          } else {
+            p.setAttribute('hidden', '');
+          }
+        });
+      }
+
+      function num(el) {
+        if (!el) return NaN;
+        const v = parseFloat(el.value);
+        return isNaN(v) ? NaN : v;
+      }
+
+      function weightInKg(weightEl) {
+        const w = num(weightEl);
+        if (isNaN(w)) return NaN;
+        const unitSel = document.querySelector('.vo2-weight-unit[data-target="' + weightEl.id + '"]');
+        const unit = unitSel ? unitSel.value : 'kg';
+        return unit === 'lbs' ? w / 2.20462 : w;
+      }
 
       function clearHighlights() {
         document.querySelectorAll('.vo2-grid td.highlighted').forEach(function (el) {
@@ -1296,88 +1601,90 @@
         }
       }
 
-      function num(el) {
-        if (!el) return NaN;
-        const v = parseFloat(el.value);
-        return isNaN(v) ? NaN : v;
-      }
-
-      function setResult(el, value) {
-        const strong = el.querySelector('strong');
-        if (!isNaN(value) && isFinite(value) && value > 0) {
-          strong.textContent = value.toFixed(1);
-        } else {
-          strong.textContent = '—';
-        }
-      }
-
-      maleBtn.addEventListener('click', function () { showGrid('M'); });
-      femaleBtn.addEventListener('click', function () { showGrid('F'); });
-
-      button.addEventListener('click', function () {
+      function compute(method) {
         const age = num(ageEl);
         const sexInput = document.querySelector('input[name="vo2-sex"]:checked');
         const sex = sexInput ? sexInput.value : 'M';
 
-        // Method 1 — Resting HR
-        let restingVo2 = NaN;
-        const restingHr = num(restingHrEl);
-        if (!isNaN(age) && !isNaN(restingHr) && restingHr > 0) {
+        if (method === 'resting') {
+          const hr = num(restingHrEl);
+          if (isNaN(age) || isNaN(hr) || hr <= 0) return NaN;
           const hrMax = 208 - (0.7 * age);
-          restingVo2 = 15.3 * (hrMax / restingHr);
+          return 15.3 * (hrMax / hr);
         }
-        setResult(restingResultEl, restingVo2);
-
-        // Method 2 — Cooper 12-min run
-        let cooperVo2 = NaN;
-        const cooperDist = num(cooperDistEl);
-        if (!isNaN(cooperDist) && cooperDist > 0) {
-          cooperVo2 = (cooperDist - 504.9) / 44.73;
+        if (method === 'cooper') {
+          const d = num(cooperDistEl);
+          if (isNaN(d) || d <= 0) return NaN;
+          return (d - 504.9) / 44.73;
         }
-        setResult(cooperResultEl, cooperVo2);
-
-        // Method 3 — FTP cycling
-        let ftpVo2 = NaN;
-        const ftp = num(ftpEl);
-        const ftpWeight = num(ftpWeightEl);
-        if (!isNaN(ftp) && !isNaN(ftpWeight) && ftpWeight > 0) {
-          ftpVo2 = (10.8 * ftp / ftpWeight) + 7;
+        if (method === 'ftp') {
+          const ftp = num(ftpEl);
+          const w = weightInKg(ftpWeightEl);
+          if (isNaN(ftp) || isNaN(w) || w <= 0) return NaN;
+          return (10.8 * ftp / w) + 7;
         }
-        setResult(ftpResultEl, ftpVo2);
-
-        // Method 4 — Rockport walk
-        let rockVo2 = NaN;
-        const rockTime = num(rockTimeEl);
-        const rockHr = num(rockHrEl);
-        const rockWeight = num(rockWeightEl);
-        if (!isNaN(rockTime) && !isNaN(rockHr) && !isNaN(rockWeight) && !isNaN(age)) {
-          const weightLbs = rockWeight * 2.20462;
+        if (method === 'rockport') {
+          const t = num(rockTimeEl);
+          const hr = num(rockHrEl);
+          const wKg = weightInKg(rockWeightEl);
+          if (isNaN(t) || isNaN(hr) || isNaN(wKg) || isNaN(age)) return NaN;
+          const wLbs = wKg * 2.20462;
           const sexCode = sex === 'F' ? 0 : 1;
-          rockVo2 = 132.853
-                  - (0.0769 * weightLbs)
-                  - (0.3877 * age)
-                  + (6.315 * sexCode)
-                  - (3.2649 * rockTime)
-                  - (0.1565 * rockHr);
+          return 132.853
+                 - (0.0769 * wLbs)
+                 - (0.3877 * age)
+                 + (6.315 * sexCode)
+                 - (3.2649 * t)
+                 - (0.1565 * hr);
         }
-        setResult(rockResultEl, rockVo2);
+        return NaN;
+      }
 
-        // Show grid for selected sex
-        showGrid(sex);
-
-        // Highlight using the user-selected method
-        const useInput = document.querySelector('input[name="vo2-use"]:checked');
-        const useMethod = useInput ? useInput.value : 'resting';
-        const selected = { resting: restingVo2, cooper: cooperVo2, ftp: ftpVo2, rockport: rockVo2 }[useMethod];
-
-        if (selected && !isNaN(selected) && !isNaN(age)) {
-          highlightCell(age, selected, sex);
-        } else {
+      // Wire up method picker
+      document.querySelectorAll('input[name="vo2-method"]').forEach(function (r) {
+        r.addEventListener('change', function () {
+          showInputPanel(selectedMethod());
+          // Hide stale result when switching methods
+          finalResult.setAttribute('hidden', '');
+          formulaDisplay.textContent = '';
           clearHighlights();
+        });
+      });
+
+      // Wire up grid sex toggle
+      maleBtn.addEventListener('click', function () { showGrid('M'); });
+      femaleBtn.addEventListener('click', function () { showGrid('F'); });
+
+      // Calculate handler
+      button.addEventListener('click', function () {
+        const method = selectedMethod();
+        const age = num(ageEl);
+        const sexInput = document.querySelector('input[name="vo2-sex"]:checked');
+        const sex = sexInput ? sexInput.value : 'M';
+
+        const vo2 = compute(method);
+
+        if (isNaN(vo2) || !isFinite(vo2) || vo2 <= 0) {
+          finalResult.removeAttribute('hidden');
+          finalResult.querySelector('.vo2-result-value strong').textContent = '—';
+          finalResult.querySelector('.vo2-result-method').textContent = 'Please fill in all the inputs for ' + (methodMeta[method] ? methodMeta[method].label : 'this method') + '.';
+          formulaDisplay.textContent = '';
+          clearHighlights();
+          return;
+        }
+
+        finalResult.removeAttribute('hidden');
+        finalResult.querySelector('.vo2-result-value strong').textContent = vo2.toFixed(1);
+        finalResult.querySelector('.vo2-result-method').textContent = 'via ' + methodMeta[method].label;
+        formulaDisplay.textContent = methodMeta[method].formula;
+
+        showGrid(sex);
+        if (!isNaN(age)) {
+          highlightCell(age, vo2, sex);
         }
       });
 
-      // Allow Enter inside any input to trigger calculation
+      // Enter key triggers calc
       document.querySelectorAll('.vo2-inputs input').forEach(function (inp) {
         inp.addEventListener('keydown', function (e) {
           if (e.key === 'Enter') {
@@ -1387,12 +1694,11 @@
         });
       });
 
-      // Recalculate (and re-highlight) when the user picks a different method radio
-      document.querySelectorAll('input[name="vo2-use"]').forEach(function (radio) {
-        radio.addEventListener('change', function () { button.click(); });
-      });
+      // Init
+      showInputPanel(selectedMethod());
     })();
   </script>
+
 
 </body>
 </html>
