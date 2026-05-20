@@ -257,47 +257,87 @@
     }
     .btn-arrow:hover::after { transform: translateX(3px); }
 
-    /* ---------- Section: Mission & Vision ---------- */
+    /* ---------- Section: Mission & Vision (redesigned) ---------- */
     .mv {
-      background: var(--paper);
+      background: var(--mist);
       padding: 96px 0;
-      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
     }
     .mv-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      margin-top: 24px;
+      gap: 32px;
+      margin-top: 32px;
       max-width: 980px;
       margin-left: auto;
       margin-right: auto;
     }
     @media (max-width: 800px) {
-      .mv-grid { grid-template-columns: 1fr; gap: 32px; }
+      .mv-grid { grid-template-columns: 1fr; gap: 24px; }
     }
     .mv-block {
       position: relative;
-      padding: 36px 32px;
-      background: var(--mist);
-      border-left: 4px solid var(--ember);
+      padding: 56px 36px 44px;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+    .mv-block:hover {
+      transform: translateY(-3px);
+    }
+    .mv-block-dark {
+      background: var(--night-2);
+      color: var(--mist);
+      box-shadow: 0 16px 40px -16px rgba(20, 32, 40, 0.35);
+    }
+    .mv-block-light {
+      background: var(--paper);
+      color: var(--ink);
+      box-shadow: 0 12px 32px -16px rgba(20, 32, 40, 0.12),
+                  inset 0 0 0 1px var(--line);
+    }
+    .mv-number {
+      position: absolute;
+      top: 22px;
+      left: 28px;
+      font-family: 'Fraunces', serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--ember);
+    }
+    .mv-icon {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      width: 38px;
+      height: 38px;
+      color: var(--ember);
     }
     .mv-label {
       font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--ember);
-      margin-bottom: 18px;
+      margin: 8px 0 22px;
     }
     .mv-text {
       font-family: 'Fraunces', serif;
-      font-size: clamp(1.2rem, 2vw, 1.45rem);
-      line-height: 1.45;
-      color: var(--ink);
+      font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+      line-height: 1.4;
       margin: 0;
       font-weight: 500;
     }
+    .mv-text em {
+      font-style: italic;
+      color: var(--ember);
+      font-weight: 600;
+    }
+    .mv-block-dark .mv-text { color: var(--mist); }
+    .mv-block-light .mv-text { color: var(--ink); }
 
     /* ---------- Section: The Problem ---------- */
     .problem {
@@ -820,13 +860,32 @@
         <h2>Mission and Vision.</h2>
       </div>
       <div class="mv-grid">
-        <div class="mv-block">
+        <div class="mv-block mv-block-dark">
+          <div class="mv-number">01</div>
+          <svg class="mv-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="18" r="6" fill="currentColor"/>
+            <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="18" y1="2" x2="18" y2="6"/>
+              <line x1="18" y1="30" x2="18" y2="34"/>
+              <line x1="2" y1="18" x2="6" y2="18"/>
+              <line x1="30" y1="18" x2="34" y2="18"/>
+              <line x1="6.7" y1="6.7" x2="9.5" y2="9.5"/>
+              <line x1="26.5" y1="26.5" x2="29.3" y2="29.3"/>
+              <line x1="6.7" y1="29.3" x2="9.5" y2="26.5"/>
+              <line x1="26.5" y1="9.5" x2="29.3" y2="6.7"/>
+            </g>
+          </svg>
           <div class="mv-label">Mission</div>
-          <p class="mv-text">To help men in the Fraser Valley make time for the friendships, fitness, and outdoor habits that compound into a longer, better life.</p>
+          <p class="mv-text">To help men in the Fraser Valley <em>make time</em> for the friendships, fitness, and outdoor habits that compound into a longer, better life.</p>
         </div>
-        <div class="mv-block">
+        <div class="mv-block mv-block-light">
+          <div class="mv-number">02</div>
+          <svg class="mv-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M 3 30 L 12 18 L 18 24 L 24 14 L 33 30 Z" fill="currentColor"/>
+            <circle cx="26" cy="8" r="3" fill="currentColor"/>
+          </svg>
           <div class="mv-label">Vision</div>
-          <p class="mv-text">A Fraser Valley where the busy years of work and family don't cost men their friendships, their fitness, or their relationship with the outdoors.</p>
+          <p class="mv-text">A Fraser Valley where the busy years of work and family <em>don't cost men</em> their friendships, their fitness, or their relationship with the outdoors.</p>
         </div>
       </div>
     </div>

@@ -199,6 +199,79 @@
       color: var(--slate);
     }
 
+    /* ---------- Ikigai section ---------- */
+    .ikigai {
+      background: var(--paper);
+      border-radius: 8px;
+      padding: 48px 36px;
+      margin-bottom: 32px;
+      box-shadow: 0 12px 32px -16px rgba(20, 32, 40, 0.10),
+                  0 0 0 1px var(--line);
+    }
+    .ikigai h2 {
+      margin-bottom: 20px;
+    }
+    .ikigai p {
+      color: var(--slate);
+    }
+    .ikigai-visual {
+      margin: 32px auto;
+      max-width: 460px;
+      padding: 16px;
+    }
+    .ikigai-visual svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .ikigai-caption {
+      max-width: 520px;
+      margin: -8px auto 32px;
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .pillars {
+      list-style: none;
+      counter-reset: pillar;
+      padding: 0;
+      margin: 20px 0 32px;
+    }
+    .pillars li {
+      counter-increment: pillar;
+      position: relative;
+      padding: 18px 18px 18px 64px;
+      margin-bottom: 12px;
+      background: var(--mist);
+      border-radius: 6px;
+      color: var(--ink);
+    }
+    .pillars li::before {
+      content: counter(pillar, decimal-leading-zero);
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ember);
+      letter-spacing: 0.05em;
+    }
+    .pillars li strong {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1.05rem;
+    }
+    .pillars li span {
+      color: var(--slate);
+      font-size: 0.96rem;
+    }
+
     /* ---------- Closing block ---------- */
     .closing {
       background: var(--night-2);
@@ -354,6 +427,60 @@
 
           <h3>Why it matters for the Society</h3>
           <p>Programming exercise as a regular social event isn't only about the friendship benefits. It also makes the fitness benefits more likely to actually be realized. The combination — same activity, same group, same time, every week — is what produces both kinds of dividend at once. It's why a Wednesday ride that runs every week for two years matters more than a one-off retreat that nobody continues.</p>
+        </article>
+
+        <!-- ========= IKIGAI ========= -->
+        <article class="ikigai" id="ikigai">
+          <div class="study-eyebrow">A philosophy worth knowing</div>
+          <h2>Ikigai — a reason worth getting out of bed for.</h2>
+
+          <p>Beyond controlled studies, there is a longer tradition worth naming. In Okinawa, Japan — one of the regions with the world's highest concentration of centenarians — the concept of <em>ikigai</em> (生き甲斐, "reason for being") describes a combination of small daily purpose, strong social ties, and consistent movement. Researchers studying Okinawan longevity (Dan Buettner's "Blue Zones") and a long-running Japanese cohort (Sone et al., 2008) have linked a strong sense of ikigai to lower mortality and better long-term health outcomes.</p>
+
+          <p>Ikigai is not directly measurable like VO2 max. But the principles map almost exactly onto how the Society is designed.</p>
+
+          <div class="ikigai-visual">
+            <svg viewBox="0 0 600 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ikigai-title ikigai-desc">
+              <title id="ikigai-title">The four overlapping circles of ikigai</title>
+              <desc id="ikigai-desc">A Venn diagram of four overlapping circles. Top-left: what you love. Top-right: what the world needs. Bottom-left: what you are good at. Bottom-right: what you can be paid for. The center, where all four meet, is labelled ikigai.</desc>
+
+              <!-- 4 overlapping circles in brand colors -->
+              <circle cx="250" cy="220" r="135" fill="#d97a3a" fill-opacity="0.32" stroke="#d97a3a" stroke-width="2"/>
+              <circle cx="350" cy="220" r="135" fill="#788a7c" fill-opacity="0.38" stroke="#788a7c" stroke-width="2"/>
+              <circle cx="250" cy="320" r="135" fill="#1c2d39" fill-opacity="0.28" stroke="#1c2d39" stroke-width="2"/>
+              <circle cx="350" cy="320" r="135" fill="#5c6670" fill-opacity="0.30" stroke="#5c6670" stroke-width="2"/>
+
+              <!-- Outer labels -->
+              <text x="110" y="115" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#1f2a30">WHAT YOU LOVE</text>
+              <text x="490" y="115" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#1f2a30">WHAT THE WORLD NEEDS</text>
+              <text x="110" y="438" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#1f2a30">WHAT YOU&apos;RE GOOD AT</text>
+              <text x="490" y="438" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#1f2a30">WHAT YOU CAN BE PAID FOR</text>
+
+              <!-- Center IKIGAI label -->
+              <text x="300" y="278" text-anchor="middle" font-family="'Fraunces', serif" font-size="30" font-weight="700" font-style="italic" fill="#1f2a30">ikigai</text>
+            </svg>
+          </div>
+
+          <p class="ikigai-caption">The popular Western framing: ikigai sits at the intersection of love, talent, purpose, and livelihood. The traditional Japanese understanding is closer to "the small joys that make life worth getting out of bed for" — daily meaning, not necessarily career fit.</p>
+
+          <h3>The five pillars (García &amp; Miralles)</h3>
+          <ol class="pillars">
+            <li><strong>Start small.</strong> <span>Find satisfaction in modest, repeatable practices — not grand gestures. A weekly walk that happens every week matters more than a quarterly retreat.</span></li>
+            <li><strong>Release yourself.</strong> <span>Let go of the need to control, impress, or perform. Show up as you are.</span></li>
+            <li><strong>Harmony.</strong> <span>Live in tune with the people around you. Belonging is built through repeated, low-stakes time together.</span></li>
+            <li><strong>The joy of little things.</strong> <span>Savour what is already near — a coffee after the walk, a fire after the hike, a quiet moment by the lake.</span></li>
+            <li><strong>Be here now.</strong> <span>Full presence in this moment matters more than distant goals. The walk is the point.</span></li>
+          </ol>
+
+          <h3>Why we cite it</h3>
+          <p>The Society's programs were designed against the evidence on cardiorespiratory fitness and social connection. The ikigai framing arrived afterward and described what was already there. A first-Sunday cold plunge at Cultus Lake is a small daily-ish joy. A Wednesday ride and a Friday run are starting small. An overnight in May around a fire is harmony. Living in a Fraser Valley with mountains in every direction makes "be here now" easy.</p>
+
+          <p>We do not claim to deliver ikigai. But we think the philosophy is a useful frame for the kind of life the Society's programs are quietly designed to support.</p>
+
+          <p class="citation">García H, Miralles F. <em>Ikigai: The Japanese Secret to a Long and Happy Life.</em> Penguin Books, 2017.</p>
+
+          <p class="citation">Sone T, Nakaya N, Ohmori K, et al. Sense of life worth living (ikigai) and mortality in Japan: Ohsaki Study. <em>Psychosomatic Medicine.</em> 2008;70(6):709–715.</p>
+
+          <a class="study-link" href="https://pubmed.ncbi.nlm.nih.gov/18596247/" target="_blank" rel="noopener noreferrer">Read the Sone et al. paper on PubMed</a>
         </article>
 
         <!-- ========= CLOSING ========= -->
